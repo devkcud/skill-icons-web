@@ -2,8 +2,8 @@
   import 'iconify-icon';
   import { toast } from '@zerodevx/svelte-toast';
   import { twMerge } from 'tailwind-merge';
-  import data from '$lib/icons.json';
-  import blacklist from '$lib/blacklist-lightmode.json';
+  import data from '../lib/icons.json';
+  import blacklist from '../lib/blacklist-lightmode.json';
 
   type IconData = {
     name: string;
@@ -23,8 +23,8 @@
     )
     .map(([key, value]) => [key, (value as IconData).name]);
 
-  let icons = ['aws', 'gcp', 'azure', 'react', 'vue', 'flutter']; // Placeholder
-  let lightMode = false;
+  let icons: string[] = []; // Placeholder
+  let lightMode: boolean = false;
   $: url = {
     base: 'https://skillicons.dev/icons',
     icons: `?i=${icons.join(',')}`,
@@ -52,7 +52,7 @@
   <title>Skill Icons - Image Builder</title>
 </svelte:head>
 
-<input type="text" bind:value={search} class="input input-bordered input-sm w-full max-w-xs" />
+<input type="text" bind:value={search} placeholder="Search by name" class="block mx-auto input input-bordered input-sm w-full max-w-xs" />
 
 <div class="flex flex-wrap justify-center gap-4 m-4">
   {#each filteredIcons as [entry, name]}
@@ -61,7 +61,7 @@
       alt={name}
       class={twMerge(
         'size-12',
-        icons.includes(entry) ? 'rounded-full ring-2 ring-offset-2 ring-red-500' : ''
+        icons.includes(entry) ? 'rounded-[10px] ring-[8px] ring-offset-2 ring-red-500' : ''
       )}
     />
   {/each}
