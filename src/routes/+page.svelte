@@ -32,8 +32,13 @@
 </svelte:head>
 
 <div class="flex flex-col items-center gap-4">
-  <button on:click={toggleMode} class="btn btn-sm btn-primary">
-    Toggle Mode: {lightMode ? 'Light' : 'Dark'}
+  <button on:click={toggleMode} class="btn btn-sm btn-ghost">
+    {#if lightMode}
+      <iconify-icon icon="lucide:sun" />
+    {:else}
+      <iconify-icon icon="lucide:moon" />
+    {/if}
+    {lightMode ? 'Light' : 'Dark'}
   </button>
 
   <img src={formatUrl()} alt="Skill Icons" class="h-12" />
