@@ -5,9 +5,9 @@
   const options = {
     theme: {
       '--toastBackground': '#1A202C',
-      '--toastBarBackground': '#718096',
+      '--toastBarBackground': '#718096'
     },
-    duration: 2000,
+    duration: 2000
   };
 </script>
 

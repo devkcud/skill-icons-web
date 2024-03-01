@@ -1,6 +1,27 @@
 <script lang="ts">
   import 'iconify-icon';
   import { toast } from '@zerodevx/svelte-toast';
+  import { twMerge } from 'tailwind-merge';
+  import data from '$lib/icons.json';
+  import blacklist from '$lib/blacklist-lightmode.json';
+
+  type IconData = {
+    name: string;
+    aliases?: string[];
+  };
+
+  let search = '';
+  $: filteredIcons = Object.entries(data)
+    .filter(([key, value]) =>
+      search === ''
+        ? true
+        : key.toLowerCase().includes(search.toLowerCase()) ||
+          (value as IconData).name.toLowerCase().includes(search.toLowerCase()) ||
+          (value as IconData).aliases?.some((alias) =>
+            alias.toLowerCase().includes(search.toLowerCase())
+          )
+    )
+    .map(([key, value]) => [key, (value as IconData).name]);
 
   let icons = ['aws', 'gcp', 'azure', 'react', 'vue', 'flutter']; // Placeholder
   let lightMode = false;
@@ -30,6 +51,21 @@
 <svelte:head>
   <title>Skill Icons - Image Builder</title>
 </svelte:head>
+
+<input type="text" bind:value={search} class="input input-bordered input-sm w-full max-w-xs" />
+
+<div class="flex flex-wrap justify-center gap-4 m-4">
+  {#each filteredIcons as [entry, name]}
+    <img
+      src={`https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/${name}${!blacklist.includes(name) ? '-Dark' : ''}.svg`}
+      alt={name}
+      class={twMerge(
+        'size-12',
+        icons.includes(entry) ? 'rounded-full ring-2 ring-offset-2 ring-red-500' : ''
+      )}
+    />
+  {/each}
+</div>
 
 <div class="flex flex-col items-center gap-4">
   <button on:click={toggleMode} class="btn btn-sm btn-ghost">

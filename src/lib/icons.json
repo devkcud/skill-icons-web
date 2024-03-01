@@ -1,0 +1,950 @@
+{
+  "aws": {
+    "name": "AWS",
+    "aliases": ["amazon", "amazon aws", "amazon web services"]
+  },
+  "ableton": {
+    "name": "Ableton",
+    "aliases": ["audio", "ableton live", "ableton studio"]
+  },
+  "activitypub": {
+    "name": "ActivityPub",
+    "aliases": []
+  },
+  "actix": {
+    "name": "Actix",
+    "aliases": ["rust"]
+  },
+  "adonis": {
+    "name": "Adonis",
+    "aliases": []
+  },
+  "ae": {
+    "name": "AfterEffects",
+    "aliases": ["adobe after effects"]
+  },
+  "aiscript": {
+    "name": "AiScript",
+    "aliases": []
+  },
+  "alpinejs": {
+    "name": "AlpineJS",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "anaconda": {
+    "name": "Anaconda",
+    "aliases": ["python"]
+  },
+  "androidstudio": {
+    "name": "AndroidStudio",
+    "aliases": []
+  },
+  "angular": {
+    "name": "Angular",
+    "aliases": ["javascript", "typescript", "angularjs"]
+  },
+  "ansible": {
+    "name": "Ansible",
+    "aliases": []
+  },
+  "apollo": {
+    "name": "Apollo",
+    "aliases": ["graphql"]
+  },
+  "apple": {
+    "name": "Apple",
+    "aliases": ["macos", "ios"]
+  },
+  "appwrite": {
+    "name": "Appwrite",
+    "aliases": []
+  },
+  "arch": {
+    "name": "Arch",
+    "aliases": ["linux"]
+  },
+  "arduino": {
+    "name": "Arduino",
+    "aliases": ["electronics"]
+  },
+  "astro": {
+    "name": "Astro",
+    "aliases": ["javascript", "typescript"]
+  },
+  "atom": {
+    "name": "Atom",
+    "aliases": ["editor"]
+  },
+  "audition": {
+    "name": "Audition",
+    "aliases": ["audio"]
+  },
+  "autocad": {
+    "name": "AutoCAD",
+    "aliases": ["cad", "3d", "modeling"]
+  },
+  "azul": {
+    "name": "Azul",
+    "aliases": []
+  },
+  "azure": {
+    "name": "Azure",
+    "aliases": ["cloud", "microsoft", "ms"]
+  },
+  "bsd": {
+    "name": "BSD",
+    "aliases": ["unix", "freebsd", "openbsd", "netbsd"]
+  },
+  "babel": {
+    "name": "Babel",
+    "aliases": ["javascript", "typescript"]
+  },
+  "bash": {
+    "name": "Bash",
+    "aliases": ["shell"]
+  },
+  "bevy": {
+    "name": "Bevy",
+    "aliases": ["rust", "game development"]
+  },
+  "bitbucket": {
+    "name": "BitBucket",
+    "aliases": ["git", "github", "gitlab"]
+  },
+  "blender": {
+    "name": "Blender",
+    "aliases": ["3d", "modeling", "graphics"]
+  },
+  "bootstrap": {
+    "name": "Bootstrap",
+    "aliases": ["css", "javascript", "html", "web development"]
+  },
+  "bun": {
+    "name": "Bun",
+    "aliases": ["nodejs", "javascript", "typescript"]
+  },
+  "c": {
+    "name": "C",
+    "aliases": []
+  },
+  "clion": {
+    "name": "CLion",
+    "aliases": ["c++", "ide"]
+  },
+  "cmake": {
+    "name": "CMake",
+    "aliases": ["make", "cmake", "c++"]
+  },
+  "cpp": {
+    "name": "CPP",
+    "aliases": ["c++"]
+  },
+  "cs": {
+    "name": "CS",
+    "aliases": ["c#", "dotnet"]
+  },
+  "css": {
+    "name": "CSS",
+    "aliases": ["html", "web development"]
+  },
+  "cassandra": {
+    "name": "Cassandra",
+    "aliases": ["database", "nosql"]
+  },
+  "clojure": {
+    "name": "Clojure",
+    "aliases": []
+  },
+  "cloudflare": {
+    "name": "Cloudflare",
+    "aliases": ["cloud", "dns"]
+  },
+  "codepen": {
+    "name": "CodePen",
+    "aliases": []
+  },
+  "coffeescript": {
+    "name": "CoffeeScript",
+    "aliases": ["javascript", "typescript"]
+  },
+  "crystal": {
+    "name": "Crystal",
+    "aliases": []
+  },
+  "cypress": {
+    "name": "Cypress",
+    "aliases": ["javascript", "testing"]
+  },
+  "d3": {
+    "name": "D3",
+    "aliases": ["javascript", "visualization"]
+  },
+  "deno": {
+    "name": "DENO",
+    "aliases": ["javascript", "typescript", "nodejs"]
+  },
+  "dart": {
+    "name": "Dart",
+    "aliases": ["flutter"]
+  },
+  "debian": {
+    "name": "Debian",
+    "aliases": ["linux", "unix"]
+  },
+  "devto": {
+    "name": "DevTo",
+    "aliases": []
+  },
+  "discord": {
+    "name": "Discord",
+    "aliases": []
+  },
+  "discordbots": {
+    "name": "DiscordBots",
+    "aliases": []
+  },
+  "discordjs": {
+    "name": "DiscordJS",
+    "aliases": []
+  },
+  "django": {
+    "name": "Django",
+    "aliases": ["python", "web development"]
+  },
+  "docker": {
+    "name": "Docker",
+    "aliases": ["devops", "containers", "kubernetes"]
+  },
+  "dotnet": {
+    "name": "DotNet",
+    "aliases": ["c#", "dotnet", "cs"]
+  },
+  "dynamodb": {
+    "name": "DynamoDB",
+    "aliases": ["database", "nosql"]
+  },
+  "eclipse": {
+    "name": "Eclipse",
+    "aliases": ["java", "ide"]
+  },
+  "elasticsearch": {
+    "name": "Elasticsearch",
+    "aliases": ["json", "search", "http", "lucene"]
+  },
+  "electron": {
+    "name": "Electron",
+    "aliases": ["javascript", "typescript", "desktop development"]
+  },
+  "elixir": {
+    "name": "Elixir",
+    "aliases": []
+  },
+  "elysia": {
+    "name": "Elysia",
+    "aliases": []
+  },
+  "emacs": {
+    "name": "Emacs",
+    "aliases": ["editor"]
+  },
+  "ember": {
+    "name": "Ember",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "emotion": {
+    "name": "Emotion",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "expressjs": {
+    "name": "ExpressJS",
+    "aliases": ["javascript", "nodejs", "web development"]
+  },
+  "fastapi": {
+    "name": "FastAPI",
+    "aliases": ["python", "web development"]
+  },
+  "fediverse": {
+    "name": "Fediverse",
+    "aliases": []
+  },
+  "figma": {
+    "name": "Figma",
+    "aliases": ["design", "ui", "ux"]
+  },
+  "firebase": {
+    "name": "Firebase",
+    "aliases": ["firestore", "db", "nosql", "realtime", "cloud"]
+  },
+  "flask": {
+    "name": "Flask",
+    "aliases": ["python", "web development"]
+  },
+  "flutter": {
+    "name": "Flutter",
+    "aliases": ["dart", "mobile development"]
+  },
+  "forth": {
+    "name": "Forth",
+    "aliases": ["assembly"]
+  },
+  "fortran": {
+    "name": "Fortran",
+    "aliases": ["assembly"]
+  },
+  "gcp": {
+    "name": "GCP",
+    "aliases": ["google", "cloud"]
+  },
+  "gtk": {
+    "name": "GTK",
+    "aliases": []
+  },
+  "gamemakerstudio": {
+    "name": "GameMakerStudio",
+    "aliases": ["game development"]
+  },
+  "gatsby": {
+    "name": "Gatsby",
+    "aliases": ["javascript", "web development"]
+  },
+  "gherkin": {
+    "name": "Gherkin",
+    "aliases": ["bdd", "cucumber"]
+  },
+  "git": {
+    "name": "Git",
+    "aliases": ["version control"]
+  },
+  "gitlab": {
+    "name": "GitLab",
+    "aliases": ["git", "version control"]
+  },
+  "github": {
+    "name": "Github",
+    "aliases": ["git", "version control"]
+  },
+  "githubactions": {
+    "name": "GithubActions",
+    "aliases": []
+  },
+  "gmail": {
+    "name": "Gmail",
+    "aliases": ["email"]
+  },
+  "golang": {
+    "name": "GoLang",
+    "aliases": []
+  },
+  "godot": {
+    "name": "Godot",
+    "aliases": ["3d", "game development", "engine"]
+  },
+  "gradle": {
+    "name": "Gradle",
+    "aliases": ["java", "build"]
+  },
+  "grafana": {
+    "name": "Grafana",
+    "aliases": ["monitoring"]
+  },
+  "graphql": {
+    "name": "GraphQL",
+    "aliases": ["api", "web development"]
+  },
+  "gulp": {
+    "name": "Gulp",
+    "aliases": ["javascript", "web development"]
+  },
+  "html": {
+    "name": "HTML",
+    "aliases": ["web development"]
+  },
+  "haskell": {
+    "name": "Haskell",
+    "aliases": ["lisp"]
+  },
+  "haxe": {
+    "name": "Haxe",
+    "aliases": []
+  },
+  "haxeflixel": {
+    "name": "HaxeFlixel",
+    "aliases": []
+  },
+  "heroku": {
+    "name": "Heroku",
+    "aliases": ["cloud"]
+  },
+  "hibernate": {
+    "name": "Hibernate",
+    "aliases": ["java", "orm"]
+  },
+  "htmx": {
+    "name": "Htmx",
+    "aliases": ["html", "web development"]
+  },
+  "ipfs": {
+    "name": "IPFS",
+    "aliases": ["web development"]
+  },
+  "idea": {
+    "name": "Idea",
+    "aliases": ["jetbrains"]
+  },
+  "illustrator": {
+    "name": "Illustrator",
+    "aliases": ["design", "ui", "ux"]
+  },
+  "instagram": {
+    "name": "Instagram",
+    "aliases": ["social media"]
+  },
+  "jquery": {
+    "name": "JQuery",
+    "aliases": ["javascript", "web development"]
+  },
+  "java": {
+    "name": "Java",
+    "aliases": []
+  },
+  "javascript": {
+    "name": "JavaScript",
+    "aliases": ["nodejs"]
+  },
+  "jenkins": {
+    "name": "Jenkins",
+    "aliases": ["ci", "continuous integration"]
+  },
+  "jest": {
+    "name": "Jest",
+    "aliases": ["javascript", "testing", "bdd"]
+  },
+  "julia": {
+    "name": "Julia",
+    "aliases": []
+  },
+  "kafka": {
+    "name": "Kafka",
+    "aliases": []
+  },
+  "kali": {
+    "name": "Kali",
+    "aliases": ["linux"]
+  },
+  "kotlin": {
+    "name": "Kotlin",
+    "aliases": ["java"]
+  },
+  "ktor": {
+    "name": "Ktor",
+    "aliases": ["java", "web development"]
+  },
+  "kubernetes": {
+    "name": "Kubernetes",
+    "aliases": ["cloud", "docker"]
+  },
+  "latex": {
+    "name": "LaTeX",
+    "aliases": []
+  },
+  "laravel": {
+    "name": "Laravel",
+    "aliases": ["php"]
+  },
+  "less": {
+    "name": "Less",
+    "aliases": ["css"]
+  },
+  "linkedin": {
+    "name": "LinkedIn",
+    "aliases": []
+  },
+  "linux": {
+    "name": "Linux",
+    "aliases": ["unix"]
+  },
+  "lit": {
+    "name": "Lit",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "lua": {
+    "name": "Lua",
+    "aliases": ["scripting"]
+  },
+  "markdown": {
+    "name": "Markdown",
+    "aliases": []
+  },
+  "mastodon": {
+    "name": "Mastodon",
+    "aliases": ["social media"]
+  },
+  "materialui": {
+    "name": "MaterialUI",
+    "aliases": ["react", "ui", "ux"]
+  },
+  "matlab": {
+    "name": "Matlab",
+    "aliases": []
+  },
+  "maven": {
+    "name": "Maven",
+    "aliases": ["java", "build"]
+  },
+  "mint": {
+    "name": "Mint",
+    "aliases": ["linux"]
+  },
+  "misskey": {
+    "name": "Misskey",
+    "aliases": ["social media"]
+  },
+  "mongodb": {
+    "name": "MongoDB",
+    "aliases": ["database", "nosql"]
+  },
+  "mysql": {
+    "name": "MySQL",
+    "aliases": ["database", "sql"]
+  },
+  "neovim": {
+    "name": "NeoVim",
+    "aliases": ["vim", "editor"]
+  },
+  "nestjs": {
+    "name": "NestJS",
+    "aliases": ["javascript", "typescript", "web development", "vue"]
+  },
+  "netlify": {
+    "name": "Netlify",
+    "aliases": []
+  },
+  "nextjs": {
+    "name": "NextJS",
+    "aliases": ["javascript", "typescript", "web development", "react"]
+  },
+  "nginx": {
+    "name": "Nginx",
+    "aliases": []
+  },
+  "nim": {
+    "name": "Nim",
+    "aliases": []
+  },
+  "nix": {
+    "name": "Nix",
+    "aliases": ["linux"]
+  },
+  "nodejs": {
+    "name": "NodeJS",
+    "aliases": ["javascript"]
+  },
+  "notion": {
+    "name": "Notion",
+    "aliases": ["social media"]
+  },
+  "npm": {
+    "name": "Npm",
+    "aliases": ["yarn", "bun", "pnpm", "bun"]
+  },
+  "nuxtjs": {
+    "name": "NuxtJS",
+    "aliases": ["javascript", "typescript", "web development", "vue"]
+  },
+  "ocaml": {
+    "name": "OCaml",
+    "aliases": []
+  },
+  "obsidian": {
+    "name": "Obsidian",
+    "aliases": ["social media"]
+  },
+  "octave": {
+    "name": "Octave",
+    "aliases": []
+  },
+  "opencv": {
+    "name": "OpenCV",
+    "aliases": []
+  },
+  "openshift": {
+    "name": "OpenShift",
+    "aliases": ["cloud", "kubernetes"]
+  },
+  "openstack": {
+    "name": "OpenStack",
+    "aliases": ["cloud", "open source"]
+  },
+  "php": {
+    "name": "PHP",
+    "aliases": []
+  },
+  "perl": {
+    "name": "Perl",
+    "aliases": []
+  },
+  "photoshop": {
+    "name": "Photoshop",
+    "aliases": ["image editing", "ui", "ux", "adobe"]
+  },
+  "phpstorm": {
+    "name": "PhpStorm",
+    "aliases": ["php", "ide", "jetbrains"]
+  },
+  "pinia": {
+    "name": "Pinia",
+    "aliases": ["javascript", "typescript", "vue"]
+  },
+  "pkl": {
+    "name": "Pkl",
+    "aliases": ["apple"]
+  },
+  "plan9": {
+    "name": "Plan9",
+    "aliases": []
+  },
+  "planetscale": {
+    "name": "PlanetScale",
+    "aliases": ["database", "sql"]
+  },
+  "pnpm": {
+    "name": "Pnpm",
+    "aliases": ["yarn", "bun", "pnpm", "bun"]
+  },
+  "postgresql": {
+    "name": "PostgreSQL",
+    "aliases": ["database", "sql"]
+  },
+  "postman": {
+    "name": "Postman",
+    "aliases": ["api", "http"]
+  },
+  "powershell": {
+    "name": "Powershell",
+    "aliases": ["windows"]
+  },
+  "premiere": {
+    "name": "Premiere",
+    "aliases": ["video editing", "adobe"]
+  },
+  "prisma": {
+    "name": "Prisma",
+    "aliases": ["orm", "database", "sql", "nosql"]
+  },
+  "processing": {
+    "name": "Processing",
+    "aliases": ["java", "web development"]
+  },
+  "prometheus": {
+    "name": "Prometheus",
+    "aliases": ["monitoring"]
+  },
+  "pug": {
+    "name": "Pug",
+    "aliases": []
+  },
+  "pycharm": {
+    "name": "PyCharm",
+    "aliases": ["ide", "jetbrains"]
+  },
+  "pytorch": {
+    "name": "PyTorch",
+    "aliases": ["python", "deep learning"]
+  },
+  "python": {
+    "name": "Python",
+    "aliases": []
+  },
+  "qt": {
+    "name": "QT",
+    "aliases": ["c++", "qt", "qtcreator", "qt5"]
+  },
+  "r": {
+    "name": "R",
+    "aliases": []
+  },
+  "ros": {
+    "name": "ROS",
+    "aliases": []
+  },
+  "rabbitmq": {
+    "name": "RabbitMQ",
+    "aliases": []
+  },
+  "rails": {
+    "name": "Rails",
+    "aliases": ["ruby on rails"]
+  },
+  "raspberrypi": {
+    "name": "RaspberryPi",
+    "aliases": []
+  },
+  "react": {
+    "name": "React",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "reactivex": {
+    "name": "ReactiveX",
+    "aliases": []
+  },
+  "redhat": {
+    "name": "RedHat",
+    "aliases": []
+  },
+  "redis": {
+    "name": "Redis",
+    "aliases": ["database", "cache"]
+  },
+  "redux": {
+    "name": "Redux",
+    "aliases": ["javascript", "typescript", "react"]
+  },
+  "regex": {
+    "name": "Regex",
+    "aliases": ["javascript"]
+  },
+  "remix": {
+    "name": "Remix",
+    "aliases": ["javascript", "typescript", "react"]
+  },
+  "replit": {
+    "name": "Replit",
+    "aliases": ["repl"]
+  },
+  "rider": {
+    "name": "Rider",
+    "aliases": ["java", "ide", "jetbrains"]
+  },
+  "robloxstudio": {
+    "name": "RobloxStudio",
+    "aliases": ["roblox"]
+  },
+  "rocket": {
+    "name": "Rocket",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "rollupjs": {
+    "name": "RollupJS",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "ruby": {
+    "name": "Ruby",
+    "aliases": []
+  },
+  "rust": {
+    "name": "Rust",
+    "aliases": []
+  },
+  "sqlite": {
+    "name": "SQLite",
+    "aliases": ["database", "sql"]
+  },
+  "svg": {
+    "name": "SVG",
+    "aliases": []
+  },
+  "sass": {
+    "name": "Sass",
+    "aliases": ["css"]
+  },
+  "scala": {
+    "name": "Scala",
+    "aliases": []
+  },
+  "scikitlearn": {
+    "name": "ScikitLearn",
+    "aliases": []
+  },
+  "selenium": {
+    "name": "Selenium",
+    "aliases": []
+  },
+  "sentry": {
+    "name": "Sentry",
+    "aliases": []
+  },
+  "sequelize": {
+    "name": "Sequelize",
+    "aliases": []
+  },
+  "sketchup": {
+    "name": "Sketchup",
+    "aliases": []
+  },
+  "solidjs": {
+    "name": "SolidJS",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "solidity": {
+    "name": "Solidity",
+    "aliases": []
+  },
+  "spring": {
+    "name": "Spring",
+    "aliases": ["java"]
+  },
+  "stackoverflow": {
+    "name": "StackOverflow",
+    "aliases": ["social media"]
+  },
+  "styledcomponents": {
+    "name": "StyledComponents",
+    "aliases": ["react"]
+  },
+  "sublime": {
+    "name": "Sublime",
+    "aliases": ["editor"]
+  },
+  "supabase": {
+    "name": "Supabase",
+    "aliases": ["database", "sql"]
+  },
+  "svelte": {
+    "name": "Svelte",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "swift": {
+    "name": "Swift",
+    "aliases": ["apple"]
+  },
+  "symfony": {
+    "name": "Symfony",
+    "aliases": []
+  },
+  "tailwindcss": {
+    "name": "TailwindCSS",
+    "aliases": []
+  },
+  "tauri": {
+    "name": "Tauri",
+    "aliases": ["rust"]
+  },
+  "tensorflow": {
+    "name": "TensorFlow",
+    "aliases": ["python"]
+  },
+  "terraform": {
+    "name": "Terraform",
+    "aliases": ["cloud"]
+  },
+  "threejs": {
+    "name": "ThreeJS",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "twitter": {
+    "name": "Twitter",
+    "aliases": ["social media"]
+  },
+  "typescript": {
+    "name": "TypeScript",
+    "aliases": ["javascript"]
+  },
+  "ubuntu": {
+    "name": "Ubuntu",
+    "aliases": ["linux"]
+  },
+  "unity": {
+    "name": "Unity",
+    "aliases": ["game development"]
+  },
+  "unrealengine": {
+    "name": "UnrealEngine",
+    "aliases": ["game development"]
+  },
+  "v": {
+    "name": "V",
+    "aliases": []
+  },
+  "vim": {
+    "name": "VIM",
+    "aliases": ["editor"]
+  },
+  "vscode": {
+    "name": "VSCode",
+    "aliases": ["editor", "visual studio code", "vs code"]
+  },
+  "vscodium": {
+    "name": "VSCodium",
+    "aliases": ["editor"]
+  },
+  "vala": {
+    "name": "Vala",
+    "aliases": []
+  },
+  "vercel": {
+    "name": "Vercel",
+    "aliases": ["cloud"]
+  },
+  "visualstudio": {
+    "name": "VisualStudio",
+    "aliases": ["editor", "visual studio", "vs"]
+  },
+  "vite": {
+    "name": "Vite",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "vitest": {
+    "name": "Vitest",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "vuejs": {
+    "name": "VueJS",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "vuetify": {
+    "name": "Vuetify",
+    "aliases": []
+  },
+  "webassembly": {
+    "name": "WebAssembly",
+    "aliases": []
+  },
+  "webstorm": {
+    "name": "WebStorm",
+    "aliases": ["editor", "jetbrains"]
+  },
+  "webflow": {
+    "name": "Webflow",
+    "aliases": ["javascript", "typescript", "web development"]
+  },
+  "webpack": {
+    "name": "Webpack",
+    "aliases": []
+  },
+  "windicss": {
+    "name": "WindiCSS",
+    "aliases": ["css"]
+  },
+  "windows": {
+    "name": "Windows",
+    "aliases": []
+  },
+  "wordpress": {
+    "name": "Wordpress",
+    "aliases": ["web development"]
+  },
+  "workers": {
+    "name": "Workers",
+    "aliases": []
+  },
+  "xd": {
+    "name": "XD",
+    "aliases": []
+  },
+  "yarn": {
+    "name": "Yarn",
+    "aliases": ["npm", "bun", "pnpm", "bun"]
+  },
+  "yew": {
+    "name": "Yew",
+    "aliases": []
+  },
+  "zig": {
+    "name": "Zig",
+    "aliases": []
+  },
+  "p5js": {
+    "name": "p5js",
+    "aliases": ["javascript", "typescript", "web development"]
+  }
+}
