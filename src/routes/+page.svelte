@@ -88,7 +88,13 @@
     toast.push('Toggled Mode: ' + (lightMode ? 'Light' : 'Dark'));
   }
 
-  function clearIcons() {
+  function clearIcons(event: MouseEvent) {
+    if (event.shiftKey) {
+      icons = [];
+      toast.push('FORCE: Cleared all icons');
+      return;
+    }
+
     toast.push({
       component: {
         src: ConfirmationToast,
