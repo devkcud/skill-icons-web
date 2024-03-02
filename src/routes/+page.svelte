@@ -47,10 +47,15 @@
   }
 
   function toggleIcon(icon: string) {
+    // @ts-ignore
+    const name = data[icon].name;
+
     if (icons.includes(icon)) {
       icons = icons.filter((i) => i !== icon);
+      toast.push(`Removed: ${name}`);
     } else {
       icons = [...icons, icon];
+      toast.push(`Added: ${name}`);
     }
   }
 </script>
