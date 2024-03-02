@@ -31,12 +31,6 @@
     return url.base + (showIcons ? url.icons : '?i=...') + url.mode;
   };
 
-  function toggleMode() {
-    lightMode = !lightMode;
-
-    toast.push('Toggled Mode: ' + (lightMode ? 'Light' : 'Dark'));
-  }
-
   function copyToClipboard() {
     if (icons.length === 0) {
       toast.push('No icons selected', {
@@ -76,6 +70,18 @@
       toast.push(`Added: ${name}`);
     }
   }
+
+  function toggleMode() {
+    lightMode = !lightMode;
+
+    toast.push('Toggled Mode: ' + (lightMode ? 'Light' : 'Dark'));
+  }
+
+  function clearIcons() {
+    // TODO: Add confirmation
+    icons = [];
+    toast.push('Cleared all icons');
+  }
 </script>
 
 <svelte:head>
@@ -85,14 +91,21 @@
 <section class="flex flex-col items-center gap-4">
   <h1 class="text-3xl font-bold">Preview</h1>
 
-  <button on:click={toggleMode} class="btn btn-sm btn-ghost">
-    {#if lightMode}
-      <iconify-icon icon="lucide:sun" />
-    {:else}
-      <iconify-icon icon="lucide:moon" />
-    {/if}
-    {lightMode ? 'Light' : 'Dark'}
-  </button>
+  <div class="flex gap-2">
+    <button on:click={toggleMode} class="btn btn-sm btn-primary">
+      {#if lightMode}
+        <iconify-icon icon="lucide:sun" />
+      {:else}
+        <iconify-icon icon="lucide:moon" />
+      {/if}
+      {lightMode ? 'Light' : 'Dark'}
+    </button>
+
+    <button on:click={clearIcons} class="btn btn-sm btn-error">
+      <iconify-icon icon="lucide:trash-2" />
+      Clear
+    </button>
+  </div>
 
   <div class="flex items-center">
     {#if icons.length !== 0}
