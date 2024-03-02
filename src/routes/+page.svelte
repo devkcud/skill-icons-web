@@ -22,11 +22,13 @@
   let icons: string[] = [];
   let lightMode: boolean = false;
   let showFullUrl: boolean = false;
+  let quantityPerRow: number = 5;
 
   $: url = {
     base: 'https://skillicons.dev/icons',
     icons: `?i=${icons.join(',')}`,
-    mode: '&theme=' + (lightMode ? 'light' : 'dark')
+    mode: '&theme=' + (lightMode ? 'light' : 'dark'),
+    perline: `&perline=${quantityPerRow}`
   };
 
   $: formatUrl = (showIcons = true, clamp = 0) => {
@@ -36,10 +38,11 @@
         '?i=' +
         icons.slice(0, clamp).join(',') +
         (icons.length > clamp ? '..' : '') +
-        url.mode
+        url.mode +
+        url.perline
       );
     }
-    return url.base + (showIcons ? url.icons : '?i=...') + url.mode;
+    return url.base + (showIcons ? url.icons : '?i=...') + url.mode + url.perline;
   };
 
   function copyToClipboard() {
@@ -86,6 +89,30 @@
     lightMode = !lightMode;
 
     toast.push('Toggled Mode: ' + (lightMode ? 'Light' : 'Dark'));
+  }
+
+  function updatePerRow(method: '+' | '-') {
+    let temp = eval(`${quantityPerRow} ${method} 1`);
+
+    if (temp > 50) {
+      temp = 50;
+    } else if (temp < 1) {
+      temp = 1;
+    }
+
+    quantityPerRow = temp;
+  }
+
+  function clampPerRow() {
+    let temp = quantityPerRow;
+
+    if (temp > 50) {
+      temp = 50;
+    } else if (temp < 1) {
+      temp = 1;
+    }
+
+    quantityPerRow = temp;
   }
 
   function clearIcons(event: MouseEvent) {
@@ -137,11 +164,26 @@
       <iconify-icon icon="lucide:trash-2" />
       Clear
     </button>
+
+    <div class="tooltip" data-tip="Quantity per row">
+      <div>
+        <button class="btn btn-sm" on:click={() => updatePerRow('-')}>-</button>
+        <input
+          class="input input-sm w-16 text-center"
+          on:change={clampPerRow}
+          bind:value={quantityPerRow}
+        />
+        <button class="btn btn-sm" on:click={() => updatePerRow('+')}>+</button>
+      </div>
+    </div>
   </div>
 
   <div class="flex items-center">
     {#if icons.length !== 0}
-      <div class="grid grid-cols-[repeat(15,minmax(0,1fr))] gap-2 px-4">
+      <div
+        class="grid gap-2 px-4"
+        style={`grid-template-columns: repeat(${quantityPerRow},minmax(0,1fr));`}
+      >
         {#each icons as id (id)}
           <SkillIcon {id} {lightMode} onClick={() => toggleIcon(id)} />
         {/each}
