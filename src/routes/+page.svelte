@@ -145,12 +145,10 @@
 
 <section>
   <div class="flex items-center justify-center mt-8 gap-2">
-    <input
-      type="text"
-      bind:value={search}
-      placeholder="Search by name"
-      class="input input-bordered input-sm"
-    />
+    <label class="flex items-center gap-2 input input-bordered input-sm">
+      <iconify-icon icon="lucide:search" class="opacity-70" />
+      <input type="text" bind:value={search} placeholder="Search by name" />
+    </label>
   </div>
 
   <div class="flex flex-wrap justify-center gap-4 p-4 max-w-7xl mx-auto">
