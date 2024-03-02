@@ -7,14 +7,11 @@
   let search = '';
   $: filteredIcons = Object.entries(data)
     .filter(function ([key, value]) {
-      if (search === '') {
-        return true;
-      }
-
       return (
-        key.toLowerCase().includes(search.toLowerCase()) ||
-        value.name.toLowerCase().includes(search.toLowerCase()) ||
-        value.aliases?.some((alias) => alias.toLowerCase().includes(search.toLowerCase()))
+        !icons.includes(key) &&
+        (key.toLowerCase().includes(search.toLowerCase()) ||
+          value.name.toLowerCase().includes(search.toLowerCase()) ||
+          value.aliases?.some((alias) => alias.toLowerCase().includes(search.toLowerCase())))
       );
     })
     .map(function ([key]) {
@@ -42,7 +39,9 @@
 
   function copyToClipboard() {
     if (icons.length === 0) {
-      toast.push('No icons selected', { theme: { '--toastColor': 'red', '--toastBarBackground': 'red' } });
+      toast.push('No icons selected', {
+        theme: { '--toastColor': 'red', '--toastBarBackground': 'red' }
+      });
       return;
     }
 
@@ -84,6 +83,8 @@
 </svelte:head>
 
 <section class="flex flex-col items-center gap-4">
+  <h1 class="text-3xl font-bold">Preview</h1>
+
   <button on:click={toggleMode} class="btn btn-sm btn-ghost">
     {#if lightMode}
       <iconify-icon icon="lucide:sun" />
@@ -93,9 +94,9 @@
     {lightMode ? 'Light' : 'Dark'}
   </button>
 
-  <div class="h-12 flex items-center">
+  <div class="flex items-center">
     {#if icons.length !== 0}
-      <div class="flex gap-2">
+      <div class="grid grid-cols-[repeat(15,minmax(0,1fr))] gap-2 px-4">
         {#each icons as id (id)}
           <SkillIcon {id} {lightMode} onClick={() => toggleIcon(id)} />
         {/each}
