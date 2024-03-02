@@ -21,6 +21,7 @@
 
   let icons: string[] = [];
   let lightMode: boolean = false;
+  let showFullUrl: boolean = false;
 
   $: url = {
     base: 'https://skillicons.dev/icons',
@@ -135,12 +136,16 @@
     {/if}
   </div>
 
-  <div class="flex gap-2 items-center">
-    <span class="font-mono text-sm text-gray-500 bg-gray-200 p-2">{formatUrl(false)}</span>
-    <button on:click={copyToClipboard}>
-      <iconify-icon icon="lucide:clipboard-copy" class="text-neutral" />
-    </button>
-  </div>
+  {#if icons.length !== 0}
+    <div class="flex gap-2 items-center">
+      <button class="btn btn-xs font-mono text-sm" on:click={() => (showFullUrl = !showFullUrl)}>
+        {formatUrl(showFullUrl)}
+      </button>
+      <button on:click={copyToClipboard}>
+        <iconify-icon icon="lucide:clipboard-copy" class="text-neutral text-xl" />
+      </button>
+    </div>
+  {/if}
 </section>
 
 <section>
