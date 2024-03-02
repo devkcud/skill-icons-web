@@ -3,6 +3,7 @@
   import { toast } from '@zerodevx/svelte-toast';
   import SkillIcon from '$lib/components/SkillIcon.svelte';
   import data from '$lib/data/icons.json';
+  import ConfirmationToast from '$lib/components/ConfirmationToast.svelte';
 
   let search = '';
   $: filteredIcons = Object.entries(data)
@@ -78,9 +79,24 @@
   }
 
   function clearIcons() {
-    // TODO: Add confirmation
-    icons = [];
-    toast.push('Cleared all icons');
+    toast.push({
+      component: {
+        src: ConfirmationToast,
+        props: {
+          message: 'Clear all icons?',
+          onAccept: () => {
+            icons = [];
+            toast.push('Cleared all icons');
+          },
+          onDeny: () => {
+            toast.push('Cancelled clearing icons');
+          }
+        },
+        sendIdTo: 'toastId'
+      },
+      dismissable: false,
+      initial: 0
+    });
   }
 </script>
 
