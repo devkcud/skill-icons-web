@@ -41,7 +41,26 @@
   }
 
   function copyToClipboard() {
-    navigator.clipboard.writeText(formatUrl());
+    if (icons.length === 0) {
+      toast.push('No icons selected', { theme: { '--toastColor': 'red', '--toastBarBackground': 'red' } });
+      return;
+    }
+
+    if (navigator.clipboard === undefined) {
+      // FIXME: Kinda hacky but it works for now
+      // Sometime later I'll do it properly
+      // im just tired rn so thatll do for now
+
+      // @ts-ignore
+      const textarea = document.createElement('textarea');
+      textarea.value = formatUrl();
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    } else {
+      navigator.clipboard.writeText(formatUrl());
+    }
 
     toast.push('Copied to clipboard');
   }
