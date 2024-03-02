@@ -2,8 +2,8 @@
   import 'iconify-icon';
   import { toast } from '@zerodevx/svelte-toast';
   import { twMerge } from 'tailwind-merge';
-  import data from '../lib/icons.json';
-  import blacklist from '../lib/blacklist-lightmode.json';
+  import data from '$lib/data/icons.json';
+  import blacklist from '$lib/data/blacklist-lightmode.json';
 
   type IconData = {
     name: string;
