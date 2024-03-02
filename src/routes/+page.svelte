@@ -214,8 +214,12 @@
   </div>
 
   <div class="flex flex-wrap justify-center gap-4 p-4 max-w-7xl mx-auto">
-    {#each filteredIcons as id (id)}
-      <SkillIcon {id} {lightMode} onClick={() => toggleIcon(id)} />
-    {/each}
+    {#if filteredIcons.length === 0}
+      <p class="text-neutral/70 italic">0 icons found.</p>
+    {:else}
+      {#each filteredIcons as id (id)}
+        <SkillIcon {id} {lightMode} onClick={() => toggleIcon(id)} />
+      {/each}
+    {/if}
   </div>
 </section>
