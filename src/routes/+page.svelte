@@ -29,7 +29,16 @@
     mode: '&theme=' + (lightMode ? 'light' : 'dark')
   };
 
-  $: formatUrl = (showIcons = true) => {
+  $: formatUrl = (showIcons = true, clamp = 0) => {
+    if (clamp > 0 && showIcons) {
+      return (
+        url.base +
+        '?i=' +
+        icons.slice(0, clamp).join(',') +
+        (icons.length > clamp ? '..' : '') +
+        url.mode
+      );
+    }
     return url.base + (showIcons ? url.icons : '?i=...') + url.mode;
   };
 
@@ -139,7 +148,7 @@
   {#if icons.length !== 0}
     <div class="flex gap-2 items-center">
       <button class="btn btn-xs font-mono text-sm" on:click={() => (showFullUrl = !showFullUrl)}>
-        {formatUrl(showFullUrl)}
+        {formatUrl(showFullUrl, 5)}
       </button>
       <button on:click={copyToClipboard}>
         <iconify-icon icon="lucide:clipboard-copy" class="text-neutral text-xl" />
