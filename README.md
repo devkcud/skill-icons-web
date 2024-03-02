@@ -1,6 +1,6 @@
 # Skill Icons "Image Builder"
 
-Unoficial web image builder for [Skill Icons](https://github.com/tandpfun/skill-icons).
+Unofficial web image builder for [Skill Icons](https://github.com/tandpfun/skill-icons).
 
 ## Todo
 
