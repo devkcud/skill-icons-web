@@ -4,22 +4,13 @@
   import SkillIcon from '$lib/components/SkillIcon.svelte';
   import data from '$lib/data/icons.json';
   import ConfirmationToast from '$lib/components/ConfirmationToast.svelte';
+  import { dataFilter, copyToClipboard } from '$lib/utils';
   import { onDestroy, onMount } from 'svelte';
   import Sortable from 'sortablejs';
+  import { twMerge } from 'tailwind-merge';
 
   let search = '';
-  $: filteredIcons = Object.entries(data)
-    .filter(function ([key, value]) {
-      return (
-        !icons.includes(key) &&
-        (key.toLowerCase().includes(search.toLowerCase()) ||
-          value.name.toLowerCase().includes(search.toLowerCase()) ||
-          value.aliases?.some((alias) => alias.toLowerCase().includes(search.toLowerCase())))
-      );
-    })
-    .map(function ([key]) {
-      return key;
-    });
+  $: filteredIcons = dataFilter(data, icons, search);
 
   let icons: string[] = [];
   let lightMode: boolean = false;
@@ -54,19 +45,6 @@
       sortable.destroy();
     }
   });
-
-  function copyToClipboard(text: string) {
-    if (icons.length === 0) {
-      toast.push('No icons selected', {
-        theme: { '--toastColor': 'red', '--toastBarBackground': 'red' }
-      });
-      return;
-    }
-
-    navigator.clipboard.writeText(text);
-
-    toast.push('Copied to clipboard');
-  }
 
   function toggleIcon(icon: string) {
     // @ts-ignore
@@ -184,26 +162,27 @@
     class="grid gap-2 px-4"
     style={`grid-template-columns: repeat(${quantityPerRow},minmax(0,1fr));`}
   >
-    {#if icons.length === 0}
-      <p class="text-neutral/70 italic" style="grid-column: 1 / -1;">No icons selected.</p>
-    {/if}
     {#each icons as id (id)}
       <SkillIcon data-id={id} {id} {lightMode} onClick={() => toggleIcon(id)} />
     {/each}
   </div>
 
+  {#if !icons.length}
+    <p class="text-neutral/70 italic text-center">No icons selected.</p>
+  {/if}
+
   <div class="flex gap-2 items-center">
-    <button class="btn btn-sm" on:click={() => copyToClipboard(fullUrl)}>
+    <button class="btn btn-sm" on:click={() => copyToClipboard(icons, fullUrl)}>
       <iconify-icon icon="lucide:clipboard-copy" class="text-neutral text-xl" />
       Copy URL
     </button>
 
-    <button class="btn btn-sm" on:click={() => copyToClipboard(markdown)}>
+    <button class="btn btn-sm" on:click={() => copyToClipboard(icons, markdown)}>
       <iconify-icon icon="material-symbols:markdown" class="text-neutral text-xl" />
       Copy Markdown
     </button>
 
-    <button class="btn btn-sm" on:click={() => copyToClipboard(html)}>
+    <button class="btn btn-sm" on:click={() => copyToClipboard(icons, html)}>
       <iconify-icon icon="material-symbols:code" class="text-neutral text-xl" />
       Copy HTML
     </button>
@@ -219,12 +198,10 @@
   </div>
 
   <div class="flex flex-wrap justify-center gap-4 p-4 max-w-7xl mx-auto">
-    {#if filteredIcons.length === 0}
-      <p class="text-neutral/70 italic">0 icons found.</p>
+    {#each filteredIcons as id (id)}
+      <SkillIcon {id} {lightMode} onClick={() => toggleIcon(id)} />
     {:else}
-      {#each filteredIcons as id (id)}
-        <SkillIcon {id} {lightMode} onClick={() => toggleIcon(id)} />
-      {/each}
-    {/if}
+      <p class="text-neutral/70 italic">0 icons found.</p>
+    {/each}
   </div>
 </section>
