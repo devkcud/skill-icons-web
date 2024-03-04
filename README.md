@@ -2,7 +2,7 @@
 
 Unofficial web image builder for [Skill Icons](https://github.com/tandpfun/skill-icons).
 
-## Todo
+## Features
 
 - [x] Add icons to stack
 - [x] Search for icons
@@ -11,6 +11,7 @@ Unofficial web image builder for [Skill Icons](https://github.com/tandpfun/skill
 - [ ] Download to png
 - [ ] Export Markdown
 - [x] Rearrange icons in stack (draggable)
+- [ ] Multiple previews
 - [ ] Make it work on mobile
 - [ ] Fix when there are a lot of icons
 
