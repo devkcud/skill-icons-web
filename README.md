@@ -9,7 +9,7 @@ Unofficial web image builder for [Skill Icons](https://github.com/tandpfun/skill
 - [x] Copy url to clipboard
 - [x] Do the rest of configuration
 - [ ] Download to png
-- [ ] Export Markdown
+- [x] Export Markdown
 - [x] Rearrange icons in stack (draggable)
 - [ ] Multiple previews
 - [ ] Make it work on mobile

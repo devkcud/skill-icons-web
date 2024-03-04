@@ -23,7 +23,6 @@
 
   let icons: string[] = [];
   let lightMode: boolean = false;
-  let showFullUrl: boolean = false;
   let quantityPerRow: number = 5;
 
   $: url = {
@@ -33,19 +32,9 @@
     perline: `&perline=${quantityPerRow}`
   };
 
-  $: formatUrl = (showIcons = true, clamp = 0) => {
-    if (clamp > 0 && showIcons) {
-      return (
-        url.base +
-        '?i=' +
-        icons.slice(0, clamp).join(',') +
-        (icons.length > clamp ? '..' : '') +
-        url.mode +
-        url.perline
-      );
-    }
-    return url.base + (showIcons ? url.icons : '?i=...') + url.mode + url.perline;
-  };
+  $: fullUrl = url.base + url.icons + url.mode + url.perline;
+  $: markdown = `![Skill Icons](${fullUrl})`;
+  $: html = `<img src="${fullUrl}" alt="Skill Icons" />`;
 
   let sortable: Sortable;
   let list: HTMLElement;
@@ -66,7 +55,7 @@
     }
   });
 
-  function copyToClipboard() {
+  function copyToClipboard(text: string) {
     if (icons.length === 0) {
       toast.push('No icons selected', {
         theme: { '--toastColor': 'red', '--toastBarBackground': 'red' }
@@ -74,21 +63,7 @@
       return;
     }
 
-    if (navigator.clipboard === undefined) {
-      // FIXME: Kinda hacky but it works for now
-      // Sometime later I'll do it properly
-      // im just tired rn so thatll do for now
-
-      // @ts-ignore
-      const textarea = document.createElement('textarea');
-      textarea.value = formatUrl();
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-    } else {
-      navigator.clipboard.writeText(formatUrl());
-    }
+    navigator.clipboard.writeText(text);
 
     toast.push('Copied to clipboard');
   }
@@ -125,6 +100,11 @@
   }
 
   function clampPerRow() {
+    if (isNaN(quantityPerRow)) {
+      quantityPerRow = 5;
+      return;
+    }
+
     let temp = quantityPerRow;
 
     if (temp > 50) {
@@ -204,23 +184,30 @@
     class="grid gap-2 px-4"
     style={`grid-template-columns: repeat(${quantityPerRow},minmax(0,1fr));`}
   >
+    {#if icons.length === 0}
+      <p class="text-neutral/70 italic" style="grid-column: 1 / -1;">No icons selected.</p>
+    {/if}
     {#each icons as id (id)}
       <SkillIcon data-id={id} {id} {lightMode} onClick={() => toggleIcon(id)} />
     {/each}
   </div>
 
-  {#if icons.length !== 0}
-    <div class="flex gap-2 items-center">
-      <button class="btn btn-xs font-mono text-sm" on:click={() => (showFullUrl = !showFullUrl)}>
-        {formatUrl(showFullUrl, 5)}
-      </button>
-      <button on:click={copyToClipboard}>
-        <iconify-icon icon="lucide:clipboard-copy" class="text-neutral text-xl" />
-      </button>
-    </div>
-  {:else}
-    <p class="text-neutral/70 italic">No icons selected.</p>
-  {/if}
+  <div class="flex gap-2 items-center">
+    <button class="btn btn-sm" on:click={() => copyToClipboard(fullUrl)}>
+      <iconify-icon icon="lucide:clipboard-copy" class="text-neutral text-xl" />
+      Copy URL
+    </button>
+
+    <button class="btn btn-sm" on:click={() => copyToClipboard(markdown)}>
+      <iconify-icon icon="material-symbols:markdown" class="text-neutral text-xl" />
+      Copy Markdown
+    </button>
+
+    <button class="btn btn-sm" on:click={() => copyToClipboard(html)}>
+      <iconify-icon icon="material-symbols:code" class="text-neutral text-xl" />
+      Copy HTML
+    </button>
+  </div>
 </section>
 
 <section>
