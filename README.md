@@ -14,6 +14,7 @@ Unofficial web image builder for [Skill Icons](https://github.com/tandpfun/skill
 - [ ] Multiple previews
 - [ ] Make it work on mobile
 - [ ] Fix when there are a lot of icons
+- [ ] Save on local storage
 
 ---
 
