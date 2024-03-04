@@ -24,7 +24,7 @@
   //$: iconName = `${name}${theme}.svg`; // If we lived in a perfect world
 </script>
 
-<div class="tooltip max-w-12 max-h-12" data-tip={name}>
+<div class="tooltip max-w-12 max-h-12" data-tip={name} {...$$restProps}>
   <button on:click={onClick}>
     <img src={`${githubUrl}${iconName}`} alt={name} loading="lazy" />
   </button>

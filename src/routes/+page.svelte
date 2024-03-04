@@ -4,6 +4,8 @@
   import SkillIcon from '$lib/components/SkillIcon.svelte';
   import data from '$lib/data/icons.json';
   import ConfirmationToast from '$lib/components/ConfirmationToast.svelte';
+  import { onDestroy, onMount } from 'svelte';
+  import Sortable from 'sortablejs';
 
   let search = '';
   $: filteredIcons = Object.entries(data)
@@ -44,6 +46,25 @@
     }
     return url.base + (showIcons ? url.icons : '?i=...') + url.mode + url.perline;
   };
+
+  let sortable: Sortable;
+  let list: HTMLElement;
+
+  onMount(() => {
+    sortable = Sortable.create(list, {
+      animation: 100,
+      store: {
+        get: (): string[] => icons,
+        set: (sortable: Sortable) => (icons = sortable.toArray())
+      }
+    });
+  });
+
+  onDestroy(() => {
+    if (sortable) {
+      sortable.destroy();
+    }
+  });
 
   function copyToClipboard() {
     if (icons.length === 0) {
@@ -178,19 +199,14 @@
     </div>
   </div>
 
-  <div class="flex items-center">
-    {#if icons.length !== 0}
-      <div
-        class="grid gap-2 px-4"
-        style={`grid-template-columns: repeat(${quantityPerRow},minmax(0,1fr));`}
-      >
-        {#each icons as id (id)}
-          <SkillIcon {id} {lightMode} onClick={() => toggleIcon(id)} />
-        {/each}
-      </div>
-    {:else}
-      <p class="text-center">Click the icons below to add to the stack.</p>
-    {/if}
+  <div
+    bind:this={list}
+    class="grid gap-2 px-4"
+    style={`grid-template-columns: repeat(${quantityPerRow},minmax(0,1fr));`}
+  >
+    {#each icons as id (id)}
+      <SkillIcon data-id={id} {id} {lightMode} onClick={() => toggleIcon(id)} />
+    {/each}
   </div>
 
   {#if icons.length !== 0}
@@ -202,6 +218,8 @@
         <iconify-icon icon="lucide:clipboard-copy" class="text-neutral text-xl" />
       </button>
     </div>
+  {:else}
+    <p class="text-neutral/70 italic">No icons selected.</p>
   {/if}
 </section>
 
