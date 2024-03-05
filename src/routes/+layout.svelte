@@ -1,4 +1,5 @@
 <script lang="ts">
+  import 'iconify-icon';
   import { SvelteToast } from '@zerodevx/svelte-toast';
   import '../app.css';
 
@@ -20,6 +21,26 @@
   </p>
 </header>
 
-<div>
+<main>
   <slot />
-</div>
+</main>
+
+<footer class="flex justify-center gap-2 py-8">
+  <a
+    class="transition opacity-70 hover:opacity-100"
+    href="https://github.com/tandpfun/skill-icons"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <iconify-icon icon="mdi:github" width="24" height="24" />
+  </a>
+
+  <a
+    class="transition opacity-70 hover:opacity-100"
+    href="https://skillicons.dev"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <iconify-icon icon="ant-design:project-filled" width="24" height="24" />
+  </a>
+</footer>
