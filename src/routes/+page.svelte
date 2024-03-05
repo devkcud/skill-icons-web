@@ -7,7 +7,8 @@
   import { dataFilter, copyToClipboard } from '$lib/utils';
   import { onDestroy, onMount } from 'svelte';
   import Sortable from 'sortablejs';
-  import { twMerge } from 'tailwind-merge';
+
+  export const prerender = true;
 
   let search = '';
   $: filteredIcons = dataFilter(data, icons, search);
@@ -168,7 +169,7 @@
   </div>
 
   {#if !icons.length}
-    <p class="text-neutral/70 italic text-center">No icons selected.</p>
+    <p class="text-neutral/70 italic text-center mb-4">No icons selected.</p>
   {/if}
 
   <div class="flex gap-2 items-center">
@@ -189,19 +190,21 @@
   </div>
 </section>
 
+<div class="divider px-16 my-8"></div>
+
 <section>
-  <div class="flex items-center justify-center mt-8 gap-2">
+  <div class="flex items-center justify-center m-4 gap-2">
     <label class="flex items-center gap-2 input input-bordered input-sm">
       <iconify-icon icon="lucide:search" class="opacity-70" />
       <input type="text" bind:value={search} placeholder="Search by name" />
     </label>
   </div>
 
-  <div class="flex flex-wrap justify-center gap-4 p-4 max-w-7xl mx-auto">
+  <div class="flex flex-wrap gap-4 p-4 max-w-7xl mx-auto">
     {#each filteredIcons as id (id)}
       <SkillIcon {id} {lightMode} onClick={() => toggleIcon(id)} />
     {:else}
-      <p class="text-neutral/70 italic">0 icons found.</p>
+      <p class="text-neutral/70 italic w-full text-center">0 icons found.</p>
     {/each}
   </div>
 </section>
