@@ -29,6 +29,7 @@ This tool provides a user-friendly interface to enhance your experience in worki
 
 ```bash
 git clone https://github.com/devkcud/skill-icons-web
+cd skill-icons-web
 ```
 
 2. Install dependencies using Bun (or similar)
