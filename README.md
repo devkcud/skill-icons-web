@@ -23,7 +23,7 @@ This tool provides a user-friendly interface to enhance your experience in worki
 
 ## Running Locally
 
-> Please note that an internet connection is required as the tool fetches icons from the [Skill Icons](https://github.com/tandpfun/skill-icons) repo and generates images from [skillicons.dev](skillicons.dev).
+> Please note that an internet connection is required as the tool fetches icons from the [Skill Icons](https://github.com/tandpfun/skill-icons) repo and generates images from [skillicons.dev](https://skillicons.dev/).
 
 1. Clone the repo
 
