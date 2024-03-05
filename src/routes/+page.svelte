@@ -128,8 +128,6 @@
 </svelte:head>
 
 <section class="flex flex-col items-center gap-4">
-  <h1 class="text-3xl font-bold">Preview</h1>
-
   <div class="flex gap-2">
     <button on:click={toggleMode} class="btn btn-sm btn-primary">
       {#if lightMode}
@@ -169,25 +167,25 @@
   </div>
 
   {#if !icons.length}
-    <p class="text-neutral/70 italic text-center mb-4">No icons selected.</p>
+    <p class="text-neutral/70 italic text-center">No icons selected.</p>
+  {:else}
+    <div class="flex gap-2 items-center">
+      <button class="btn btn-sm" on:click={() => copyToClipboard(icons, fullUrl)}>
+        <iconify-icon icon="lucide:clipboard-copy" class="text-neutral text-xl" />
+        Copy URL
+      </button>
+
+      <button class="btn btn-sm" on:click={() => copyToClipboard(icons, markdown)}>
+        <iconify-icon icon="material-symbols:markdown" class="text-neutral text-xl" />
+        Copy Markdown
+      </button>
+
+      <button class="btn btn-sm" on:click={() => copyToClipboard(icons, html)}>
+        <iconify-icon icon="material-symbols:code" class="text-neutral text-xl" />
+        Copy HTML
+      </button>
+    </div>
   {/if}
-
-  <div class="flex gap-2 items-center">
-    <button class="btn btn-sm" on:click={() => copyToClipboard(icons, fullUrl)}>
-      <iconify-icon icon="lucide:clipboard-copy" class="text-neutral text-xl" />
-      Copy URL
-    </button>
-
-    <button class="btn btn-sm" on:click={() => copyToClipboard(icons, markdown)}>
-      <iconify-icon icon="material-symbols:markdown" class="text-neutral text-xl" />
-      Copy Markdown
-    </button>
-
-    <button class="btn btn-sm" on:click={() => copyToClipboard(icons, html)}>
-      <iconify-icon icon="material-symbols:code" class="text-neutral text-xl" />
-      Copy HTML
-    </button>
-  </div>
 </section>
 
 <div class="divider px-16 my-8"></div>
