@@ -1,25 +1,52 @@
-# Skill Icons "Image Builder"
+# Skill Icons Image Builder
 
-Unofficial web image builder for [Skill Icons](https://github.com/tandpfun/skill-icons).
+Unofficial web Image Builder for [Skill Icons](https://github.com/tandpfun/skill-icons).  
+This tool provides a user-friendly interface to enhance your experience in working with Skill Icons, giving you the flexibility to customize and organize your collection.
 
 ## Features
 
-- [x] Add icons to stack
-- [x] Search for icons
-- [x] Copy url to clipboard
-- [x] Do the rest of configuration
-- [ ] Download to png
-- [x] Export Markdown
-- [x] Rearrange icons in stack (draggable)
+- [x] Add Icons to Stack
+- [x] Search Functionality
+- [x] Copy to Clipboard
+  - [x] Copy URL
+  - [x] Copy Markdown
+  - [x] Copy HTML
+- [x] Configuration
+  - [x] Switch Dark/Light Mode
+  - [x] Configure Per Line
+  - [x] Icon Rearrangement
+- [x] Mobile Compatibility
+- [ ] Export to PNG
+- [ ] Import Configuration from URL
+- [ ] Save on Local Storage
 - [ ] Multiple previews
-- [ ] Make it work on mobile
-- [ ] Fix when there are a lot of icons
-- [ ] Save on local storage
+
+## Running Locally
+
+> Please note that an internet connection is required as the tool fetches icons from the [Skill Icons](https://github.com/tandpfun/skill-icons) repo and generates images from [skillicons.dev](skillicons.dev).
+
+1. Clone the repo
+
+```bash
+git clone https://github.com/devkcud/skill-icons-web
+```
+
+2. Install dependencies using Bun (or similar)
+
+```bash
+bun install
+```
+
+3. Run the server
+
+```bash
+bun run dev
+```
+
+4. Open `http://localhost:5173` in your browser
 
 ---
 
 ## DISCLAIMER
 
-This project is not affiliated with the [Skill Icons](https://github.com/tandpfun/skill-icons) project or [Thijs](https://github.com/tandpfun).  
-I also don't own the original logo at `/static/favicon.png` or `/static/skillicons.svg`.  
-If the [original author (Thijs)](https://github.com/tandpfun) demands me to delete it and/or take it down, I'll do so.
+This project is an independent effort and is not affiliated with the official [Skill Icons](https://github.com/tandpfun/skill-icons) project or its creator, [Thijs](https://github.com/tandpfun). The original logo at `/static/favicon.png` or `/static/skillicons.svg` is owned by [Thijs](https://github.com/tandpfun). In the event that the original author requests the removal or takedown of this project, it will be promptly addressed.
