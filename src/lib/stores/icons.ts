@@ -10,16 +10,12 @@ export const icons: Writable<string[]> = writable<string[]>([]);
 
 export function addIcon(id: string): void {
   icons.update((currentIcons: string[]) => [...currentIcons, id]);
-  const uns = icons.subscribe((c) => {
-    console.log(c);
-  });
-  uns();
   toast.push(`Added: ${allIconsData[id].name}`);
 }
 
 export function removeIcon(id: string): void {
   icons.update((currentIcons: string[]) => currentIcons.filter((i) => i !== id));
-  toast.push(`Added: ${allIconsData[id].name}`);
+  toast.push(`Removed: ${allIconsData[id].name}`);
 }
 
 export function clearIcons(event: MouseEvent): void {
