@@ -28,7 +28,7 @@
 <footer class="flex justify-center gap-2 py-8">
   <a
     class="transition opacity-70 hover:opacity-100"
-    href="https://github.com/tandpfun/skill-icons"
+    href="https://github.com/devkcud/skill-icons-web"
     target="_blank"
     rel="noreferrer"
   >
