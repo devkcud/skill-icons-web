@@ -12,6 +12,7 @@
     removeIcon,
     clipboard
   } from '$lib/stores/icons';
+  import LocalStorage from '$lib/stores/localstorage';
 
   let search = '';
   $: filteredIcons = Object.entries(allIconsData)
@@ -43,6 +44,10 @@
   let list: HTMLElement;
 
   onMount(() => {
+    lightMode = LocalStorage.get('mode', 'dark') === 'light';
+    quantityPerRow = Number(LocalStorage.get('perline', '15')!);
+    $icons = JSON.parse(LocalStorage.get('icons', '[]')!);
+
     sortable = Sortable.create(list, {
       animation: 100,
       store: {
@@ -60,6 +65,7 @@
 
   function toggleMode() {
     lightMode = !lightMode;
+    LocalStorage.set('mode', lightMode ? 'light' : 'dark');
 
     toast.push('Toggled Mode: ' + (lightMode ? 'Light' : 'Dark'));
   }
@@ -74,11 +80,13 @@
     }
 
     quantityPerRow = temp;
+    LocalStorage.set('perline', quantityPerRow.toString());
   }
 
   function clampPerRow() {
     if (isNaN(quantityPerRow)) {
       quantityPerRow = 5;
+      LocalStorage.set('perline', quantityPerRow.toString());
       return;
     }
 
@@ -91,6 +99,7 @@
     }
 
     quantityPerRow = temp;
+    LocalStorage.set('perline', quantityPerRow.toString());
   }
 </script>
 

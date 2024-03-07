@@ -18,7 +18,7 @@ This tool provides a user-friendly interface to enhance your experience in worki
 - [x] Mobile Compatibility
 - [ ] Export to PNG
 - [ ] Import Configuration from URL
-- [ ] Save on Local Storage
+- [x] Save on Local Storage
 - [ ] Multiple previews
 
 ## Running Locally
