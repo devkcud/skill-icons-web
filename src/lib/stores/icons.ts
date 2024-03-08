@@ -58,3 +58,12 @@ export function clearIcons(event: MouseEvent): void {
     initial: 0
   });
 }
+
+export function sortIcons() {
+  icons.update((currentIcons) => {
+    storage.set(JSON.stringify(currentIcons.sort()));
+    return currentIcons.sort();
+  });
+
+  toast.push('Sorted icons');
+}

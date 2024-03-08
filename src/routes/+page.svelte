@@ -3,7 +3,14 @@
   import { onDestroy, onMount } from 'svelte';
   import Sortable from 'sortablejs';
   import SkillIcon from '$lib/components/SkillIcon.svelte';
-  import { allIconsData, icons, clearIcons, addIcon, removeIcon } from '$lib/stores/icons';
+  import {
+    allIconsData,
+    icons,
+    clearIcons,
+    addIcon,
+    removeIcon,
+    sortIcons
+  } from '$lib/stores/icons';
   import { theme, toggleTheme, type Theme } from '$lib/stores/theme';
   import { perline, setPerline } from '$lib/stores/perline';
   import LocalStorage from '$lib/utils/localstorage';
@@ -68,13 +75,18 @@
 
 <section class="flex flex-col items-center gap-4">
   <div class="flex gap-2">
-    <button on:click={toggleTheme} class="btn btn-sm btn-primary" class:invert={$theme === 'light'}>
+    <button on:click={toggleTheme} class="btn btn-sm" class:btn-primary={$theme !== 'light'}>
       {#if $theme === 'light'}
         <iconify-icon icon="lucide:sun" />
       {:else}
         <iconify-icon icon="lucide:moon" />
       {/if}
       {toTitle($theme)}
+    </button>
+
+    <button on:click={sortIcons} class="btn btn-sm">
+      <iconify-icon icon="mdi:sort" />
+      Sort
     </button>
 
     <button on:click={clearIcons} class="btn btn-sm btn-error">
