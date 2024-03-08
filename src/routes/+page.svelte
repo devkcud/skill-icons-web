@@ -3,18 +3,12 @@
   import { onDestroy, onMount } from 'svelte';
   import Sortable from 'sortablejs';
   import SkillIcon from '$lib/components/SkillIcon.svelte';
-  import {
-    allIconsData,
-    icons,
-    clearIcons,
-    addIcon,
-    removeIcon,
-    clipboard
-  } from '$lib/stores/icons';
+  import { allIconsData, icons, clearIcons, addIcon, removeIcon } from '$lib/stores/icons';
   import { theme, toggleTheme, type Theme } from '$lib/stores/theme';
   import { perline, setPerline } from '$lib/stores/perline';
   import LocalStorage from '$lib/utils/localstorage';
-  import { toTitle } from '$lib/utils/string';
+  import { clipboard, toTitle } from '$lib/utils/string';
+  import { storageName } from '$lib/data/config';
 
   let search = '';
   $: filteredIcons = Object.entries(allIconsData)
@@ -43,9 +37,11 @@
   let list: HTMLElement;
 
   onMount(() => {
-    $theme = LocalStorage.get('theme', 'dark')! as Theme;
-    $perline = Number(LocalStorage.get('perline', '15')!);
-    $icons = JSON.parse(LocalStorage.get('icons', '[]')!);
+    const { ICONS, PERLINE, THEME } = storageName;
+
+    $theme = LocalStorage.get(THEME.name, THEME.defaultValue)! as Theme;
+    $perline = Number(LocalStorage.get(PERLINE.name, String(PERLINE.defaultValue))!);
+    $icons = JSON.parse(LocalStorage.get(ICONS.name, String(ICONS.defaultValue))!);
 
     sortable = Sortable.create(list, {
       animation: 100,
