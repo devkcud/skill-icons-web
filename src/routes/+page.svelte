@@ -1,6 +1,5 @@
 <script lang="ts">
   import 'iconify-icon';
-  import { toast } from '@zerodevx/svelte-toast';
   import { onDestroy, onMount } from 'svelte';
   import Sortable from 'sortablejs';
   import SkillIcon from '$lib/components/SkillIcon.svelte';
@@ -12,7 +11,9 @@
     removeIcon,
     clipboard
   } from '$lib/stores/icons';
-  import LocalStorage from '$lib/stores/localstorage';
+  import { theme, toggleTheme, type Theme } from '$lib/stores/theme';
+  import { perline, setPerline } from '$lib/stores/perline';
+  import LocalStorage from '$lib/utils/localstorage';
 
   let search = '';
   $: filteredIcons = Object.entries(allIconsData)
@@ -26,14 +27,11 @@
     })
     .map(([key]) => key);
 
-  let lightMode: boolean = false;
-  let quantityPerRow: number = 15;
-
   $: url = {
     base: 'https://skillicons.dev/icons',
     icons: `?i=${$icons.join(',')}`,
-    mode: '&theme=' + (lightMode ? 'light' : 'dark'),
-    perline: `&perline=${quantityPerRow}`
+    mode: `&theme=${$theme}`,
+    perline: `&perline=${$perline}`
   };
 
   $: fullUrl = url.base + url.icons + url.mode + url.perline;
@@ -44,15 +42,18 @@
   let list: HTMLElement;
 
   onMount(() => {
-    lightMode = LocalStorage.get('mode', 'dark') === 'light';
-    quantityPerRow = Number(LocalStorage.get('perline', '15')!);
+    $theme = LocalStorage.get('theme', 'dark')! as Theme;
+    $perline = Number(LocalStorage.get('perline', '15')!);
     $icons = JSON.parse(LocalStorage.get('icons', '[]')!);
 
     sortable = Sortable.create(list, {
       animation: 100,
       store: {
         get: (): string[] => $icons,
-        set: (sortable: Sortable) => icons.set(sortable.toArray())
+        set: (sortable: Sortable) => {
+          LocalStorage.set('icons', JSON.stringify(sortable.toArray()));
+          icons.set(sortable.toArray());
+        }
       }
     });
   });
@@ -62,45 +63,6 @@
       sortable.destroy();
     }
   });
-
-  function toggleMode() {
-    lightMode = !lightMode;
-    LocalStorage.set('mode', lightMode ? 'light' : 'dark');
-
-    toast.push('Toggled Mode: ' + (lightMode ? 'Light' : 'Dark'));
-  }
-
-  function updatePerRow(method: '+' | '-') {
-    let temp = eval(`${quantityPerRow} ${method} 1`);
-
-    if (temp > 50) {
-      temp = 50;
-    } else if (temp < 1) {
-      temp = 1;
-    }
-
-    quantityPerRow = temp;
-    LocalStorage.set('perline', quantityPerRow.toString());
-  }
-
-  function clampPerRow() {
-    if (isNaN(quantityPerRow)) {
-      quantityPerRow = 5;
-      LocalStorage.set('perline', quantityPerRow.toString());
-      return;
-    }
-
-    let temp = quantityPerRow;
-
-    if (temp > 50) {
-      temp = 50;
-    } else if (temp < 1) {
-      temp = 1;
-    }
-
-    quantityPerRow = temp;
-    LocalStorage.set('perline', quantityPerRow.toString());
-  }
 </script>
 
 <svelte:head>
@@ -109,13 +71,13 @@
 
 <section class="flex flex-col items-center gap-4">
   <div class="flex gap-2">
-    <button on:click={toggleMode} class="btn btn-sm btn-primary">
-      {#if lightMode}
+    <button on:click={toggleTheme} class="btn btn-sm btn-primary">
+      {#if $theme === 'light'}
         <iconify-icon icon="lucide:sun" />
       {:else}
         <iconify-icon icon="lucide:moon" />
       {/if}
-      {lightMode ? 'Light' : 'Dark'}
+      {$theme}
     </button>
 
     <button on:click={clearIcons} class="btn btn-sm btn-error">
@@ -125,13 +87,13 @@
 
     <div class="tooltip" data-tip="Quantity per row">
       <div>
-        <button class="btn btn-sm" on:click={() => updatePerRow('-')}>-</button>
+        <button class="btn btn-sm" on:click={() => setPerline($perline - 1)}>-</button>
         <input
           class="input input-sm w-16 text-center"
-          on:change={clampPerRow}
-          bind:value={quantityPerRow}
+          on:change={() => setPerline($perline)}
+          bind:value={$perline}
         />
-        <button class="btn btn-sm" on:click={() => updatePerRow('+')}>+</button>
+        <button class="btn btn-sm" on:click={() => setPerline($perline + 1)}>+</button>
       </div>
     </div>
   </div>
@@ -139,10 +101,10 @@
   <div
     bind:this={list}
     class="grid gap-2 px-4"
-    style={`grid-template-columns: repeat(${quantityPerRow},minmax(0,1fr));`}
+    style={`grid-template-columns: repeat(${$perline},minmax(0,1fr));`}
   >
     {#each $icons as id (id)}
-      <SkillIcon data-id={id} {id} {lightMode} onClick={() => removeIcon(id)} />
+      <SkillIcon data-id={id} {id} lightMode={$theme === 'light'} onClick={() => removeIcon(id)} />
     {/each}
   </div>
 
@@ -180,7 +142,7 @@
 
   <div class="flex flex-wrap gap-4 p-4 max-w-7xl mx-auto">
     {#each filteredIcons as id (id)}
-      <SkillIcon {id} {lightMode} onClick={() => addIcon(id)} />
+      <SkillIcon {id} lightMode={$theme === 'light'} onClick={() => addIcon(id)} />
     {/each}
   </div>
 </section>

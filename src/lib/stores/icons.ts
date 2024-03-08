@@ -2,7 +2,7 @@ import { writable, type Writable } from 'svelte/store';
 import { toast } from '@zerodevx/svelte-toast';
 import ConfirmationToast from '$lib/components/ConfirmationToast.svelte';
 import data from '$lib/data/icons.json';
-import LocalStorage from './localstorage';
+import LocalStorage from '../utils/localstorage';
 
 type Data = Record<string, { name: string; aliases: string[] }>;
 
