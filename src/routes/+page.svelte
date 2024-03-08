@@ -14,6 +14,7 @@
   import { theme, toggleTheme, type Theme } from '$lib/stores/theme';
   import { perline, setPerline } from '$lib/stores/perline';
   import LocalStorage from '$lib/utils/localstorage';
+  import { toTitle } from '$lib/utils/string';
 
   let search = '';
   $: filteredIcons = Object.entries(allIconsData)
@@ -77,7 +78,7 @@
       {:else}
         <iconify-icon icon="lucide:moon" />
       {/if}
-      {$theme}
+      {toTitle($theme)}
     </button>
 
     <button on:click={clearIcons} class="btn btn-sm btn-error">
