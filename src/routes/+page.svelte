@@ -71,7 +71,7 @@
 
 <section class="flex flex-col items-center gap-4">
   <div class="flex gap-2">
-    <button on:click={toggleTheme} class="btn btn-sm btn-primary">
+    <button on:click={toggleTheme} class="btn btn-sm btn-primary" class:invert={$theme === 'light'}>
       {#if $theme === 'light'}
         <iconify-icon icon="lucide:sun" />
       {:else}
