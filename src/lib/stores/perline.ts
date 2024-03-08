@@ -10,7 +10,7 @@ export const perline: Writable<number> = writable<number>(PERLINE.defaultValue);
 export function setPerline(amount: number): void {
   if (isNaN(amount)) amount = 15;
   if (amount < 1) amount = 1;
-  if (amount > 50) amount = 20;
+  if (amount > 50) amount = 50;
 
   perline.set(amount);
   storage.set(String(amount));
