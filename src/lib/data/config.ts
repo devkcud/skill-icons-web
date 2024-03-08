@@ -5,7 +5,7 @@ export const storageName = {
   },
   PERLINE: {
     name: 'perline',
-    defaultValue: 15,
+    defaultValue: 15
   },
   THEME: {
     name: 'theme',
