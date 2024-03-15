@@ -50,9 +50,9 @@
   onMount(() => {
     const { ICONS, PERLINE, THEME } = storageName;
 
-    $theme = LocalStorage.get(THEME.name, THEME.defaultValue)! as Theme;
-    $perline = Number(LocalStorage.get(PERLINE.name, String(PERLINE.defaultValue))!);
-    $icons = JSON.parse(LocalStorage.get(ICONS.name, String(ICONS.defaultValue))!);
+    $theme = (LocalStorage.get(THEME.name) || THEME.defaultValue) as Theme;
+    $perline = Number(LocalStorage.get(PERLINE.name) || String(PERLINE.defaultValue));
+    $icons = JSON.parse(LocalStorage.get(ICONS.name) || '[]'); // can't be ICONS.defaultValue cause it will just throw "empty string"
 
     sortable = Sortable.create(list, {
       animation: 100,
