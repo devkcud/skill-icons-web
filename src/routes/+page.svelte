@@ -142,7 +142,7 @@
 
   <div
     bind:this={list}
-    class="grid gap-2 px-4"
+    class="grid gap-2 px-4 my-4"
     style={`grid-template-columns: repeat(${$perline},minmax(0,1fr));`}
   >
     {#each $icons as id (id)}
