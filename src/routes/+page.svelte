@@ -169,6 +169,12 @@
         Copy HTML
       </button>
     </div>
+
+    <div class="flex gap-2 items-center opacity-50 text-sm">
+      <iconify-icon icon="mdi:information" />
+      <b>TIP:</b>
+      <i>Drag icons to reorder!</i>
+    </div>
   {/if}
 </section>
 
