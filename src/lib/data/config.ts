@@ -1,7 +1,9 @@
+import type { Theme } from '$lib/stores/theme';
+
 export const storageName = {
   ICONS: {
     name: 'icons',
-    defaultValue: []
+    defaultValue: [] as string[]
   },
   PERLINE: {
     name: 'perline',
@@ -9,6 +11,6 @@ export const storageName = {
   },
   THEME: {
     name: 'theme',
-    defaultValue: 'dark'
+    defaultValue: 'dark' as Theme
   }
 };

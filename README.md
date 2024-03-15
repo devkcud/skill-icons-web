@@ -17,7 +17,7 @@ This tool provides a user-friendly interface to enhance your experience in worki
   - [x] Icon Rearrangement
 - [x] Mobile Compatibility
 - [ ] Export to PNG
-- [ ] Import Configuration from URL
+- [x] Import Configuration from URL
 - [x] Save on Local Storage
 - [ ] Multiple previews
 

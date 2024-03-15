@@ -16,6 +16,8 @@
   import LocalStorage from '$lib/utils/localstorage';
   import { clipboard, toTitle } from '$lib/utils/string';
   import { storageName } from '$lib/data/config';
+  import { loadFromURL } from '$lib/utils/urlimporter';
+  import { toast } from '@zerodevx/svelte-toast';
 
   let search = '';
   $: filteredIcons = Object.entries(allIconsData)
@@ -39,6 +41,8 @@
   $: fullUrl = url.base + url.icons + url.mode + url.perline;
   $: markdown = `![Skill Icons](${fullUrl})`;
   $: html = `<img src="${fullUrl}" alt="Skill Icons" />`;
+
+  let importUrl: string;
 
   let sortable: Sortable;
   let list: HTMLElement;
@@ -67,11 +71,40 @@
       sortable.destroy();
     }
   });
+
+  function urlParse() {
+    if (
+      !importUrl ||
+      importUrl.trim() === '' ||
+      !importUrl.startsWith('https://skillicons.dev/icons?')
+    )
+      return toast.push('Invalid URL');
+
+    loadFromURL(importUrl);
+    importUrl = '';
+  }
 </script>
 
 <svelte:head>
   <title>Skill Icons - Image Builder</title>
 </svelte:head>
+
+<div class="flex gap-2 items-center mx-auto w-fit">
+  <input
+    bind:value={importUrl}
+    class="input input-bordered input-sm"
+    type="text"
+    on:keydown={(e) => e.key === 'Enter' && urlParse()}
+    placeholder="Import URL"
+  />
+
+  <button on:click={() => urlParse()} class="btn btn-sm btn-primary">
+    <iconify-icon icon="mdi:import" />
+    Import
+  </button>
+</div>
+
+<div class="divider px-16 my-8"></div>
 
 <section class="flex flex-col items-center gap-4">
   <div class="flex gap-2">

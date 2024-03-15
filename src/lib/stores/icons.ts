@@ -30,8 +30,8 @@ export function removeIcon(id: string): void {
   toast.push(`Removed: ${allIconsData[id].name}`);
 }
 
-export function clearIcons(event: MouseEvent): void {
-  if (event.shiftKey) {
+export function clearIcons(event?: MouseEvent): void {
+  if (event?.shiftKey) {
     icons.set([]);
     storage.remove();
     toast.push('FORCE: Cleared all icons');
@@ -66,4 +66,8 @@ export function sortIcons() {
   });
 
   toast.push('Sorted icons');
+}
+
+export function existIcon(id: string): boolean {
+  return allIconsData[id] !== undefined;
 }
