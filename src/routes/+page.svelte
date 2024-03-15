@@ -182,7 +182,7 @@
     </label>
   </div>
 
-  <div class="flex flex-wrap gap-4 p-4 max-w-7xl mx-auto">
+  <div class="flex justify-center flex-wrap gap-4 p-4 max-w-7xl mx-auto">
     {#each filteredIcons as id (id)}
       <SkillIcon {id} lightMode={$theme === 'light'} onClick={() => addIcon(id)} />
     {/each}
