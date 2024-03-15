@@ -19,7 +19,7 @@ This tool provides a user-friendly interface to enhance your experience in worki
 - [ ] Export to PNG
 - [x] Import Configuration from URL
 - [x] Save on Local Storage
-- [ ] Multiple previews
+- [ ] Multiple previews (maybe?)
 
 ## Running Locally
 
