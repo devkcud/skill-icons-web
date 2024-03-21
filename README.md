@@ -60,6 +60,12 @@ Feel free to fork the repository, make modifications, and submit PRs. Make sure 
 
 For those who may not be familiar with Svelte or lack development experience but still wish to contribute, you can contribute by identifying and reporting issues, correcting typos, and other similar tasks.
 
+## 📜 License
+
+This project is released under the [Unlicense](https://unlicense.org/) - see the [LICENSE](LICENSE) file for details.
+
+The icons used in this project are sourced from the [Skill Icons](https://github.com/tandpfun/skill-icons) repository, which has its own licensing terms. Please refer to the repository's license for more information.
+
 ## ❗️ DISCLAIMER
 
 This project is an independent effort and is not affiliated with the official [Skill Icons](https://github.com/tandpfun/skill-icons) project or its creator, [Thijs](https://github.com/tandpfun). The original logo at `/static/favicon.png` and `/static/skillicons.svg` are both owned by [Thijs](https://github.com/tandpfun).
