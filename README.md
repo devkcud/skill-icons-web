@@ -16,7 +16,6 @@ This tool provides a user-friendly interface to enhance your experience in worki
   - [x] Configure Per Line
   - [x] Icon Rearrangement
 - [x] Mobile Compatibility
-- [ ] Export to PNG
 - [x] Import Configuration from URL
 
 ## Running Locally
