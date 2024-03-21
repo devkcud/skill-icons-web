@@ -1,26 +1,37 @@
-# Skill Icons Image Builder
+<h1 align="center">🖼️ Skill Icons Image Builder 🖌️</h1>
 
-Unofficial web Image Builder for [Skill Icons](https://github.com/tandpfun/skill-icons).  
-This tool provides a user-friendly interface to enhance your experience in working with Skill Icons, giving you the flexibility to customize and organize your collection.
+<p align="center">
+  <a href="https://skill-icons-web.vercel.app">
+    <img alt="GitHub deployments" src="https://img.shields.io/github/deployments/devkcud/skill-icons-web/Production">
+  </a>
+  <a href="https://github.com/devkcud/skill-icons-web/issues">
+    <img alt="GitHub Issues or Pull Requests" src="https://img.shields.io/github/issues/devkcud/skill-icons-web">
+  </a>
+  <a href="https://skill-icons-web.vercel.app">
+    <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fskill-icons-web.vercel.app">
+  </a>
+</p>
 
-## Features
+Unofficial "Image Builder" for [Skill Icons](https://github.com/tandpfun/skill-icons), designed with the original project's layout in mind.  
+This tool provides a user-friendly interface to enhance your experience in working with Skill Icons, giving you the flexibility to customize and organize your icons.
 
-- [x] Add Icons to Stack
+## 🔥 Features
+
+- [x] Manage Icons (Add, Remove & Rearrange)
 - [x] Search Functionality
 - [x] Copy to Clipboard
   - [x] Copy URL
   - [x] Copy Markdown
   - [x] Copy HTML
 - [x] Configuration
-  - [x] Switch Dark/Light Mode
-  - [x] Configure Per Line
-  - [x] Icon Rearrangement
-- [x] Mobile Compatibility
-- [x] Import Configuration from URL
+  - [x] Switch Icons to Dark or Light Mode
+  - [x] Configure Icons Per Line
+- [x] Mobile Compatibility (not so good but it works)
+- [x] Import Configuration and Icons from URL
 
-## Running Locally
+## 📂 Running Locally
 
-> Please note that an internet connection is required as the tool fetches icons from the [Skill Icons](https://github.com/tandpfun/skill-icons) repo and generates images from [skillicons.dev](https://skillicons.dev/).
+> NOTE: An internet connection is required, as the tool fetches icons from the [Skill Icons](https://github.com/tandpfun/skill-icons) repository and generates images from [skillicons.dev](https://skillicons.dev/). Additionally, it utilizes icons from Iconify.
 
 1. Clone the repo
 
@@ -43,8 +54,12 @@ bun run dev
 
 4. Open `http://localhost:5173` in your browser
 
----
+## 📝 Contributing
 
-## DISCLAIMER
+Feel free to fork the repository, make modifications, and submit PRs. Make sure that any changes adhere to our standards for safety and maintainability.
 
-This project is an independent effort and is not affiliated with the official [Skill Icons](https://github.com/tandpfun/skill-icons) project or its creator, [Thijs](https://github.com/tandpfun). The original logo at `/static/favicon.png` or `/static/skillicons.svg` is owned by [Thijs](https://github.com/tandpfun). In the event that the original author requests the removal or takedown of this project, it will be promptly addressed.
+For those who may not be familiar with Svelte or lack development experience but still wish to contribute, you can contribute by identifying and reporting issues, correcting typos, and other similar tasks.
+
+## ❗️ DISCLAIMER
+
+This project is an independent effort and is not affiliated with the official [Skill Icons](https://github.com/tandpfun/skill-icons) project or its creator, [Thijs](https://github.com/tandpfun). The original logo at `/static/favicon.png` and `/static/skillicons.svg` are both owned by [Thijs](https://github.com/tandpfun).
