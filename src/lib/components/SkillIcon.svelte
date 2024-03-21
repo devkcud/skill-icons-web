@@ -1,31 +1,49 @@
 <script lang="ts">
-  import blacklist from '$lib/data/blacklist-lightmode.json';
-  import data from '$lib/data/icons.json';
+  import darkmodeonly from '$lib/data/darkmode-only.json';
+  import { iconsData } from '$lib/stores/icons';
+  import type { Theme } from '$lib/stores/theme';
+  import { toTitle } from '$lib/utils/string';
 
+  /**
+   * The icon's identifier found in `icons.json`.
+   */
   export let id: string;
-  export let lightMode: boolean;
-  export let onClick: (...args: any) => void;
+  /**
+   * Indicates the theme as light or dark.
+   */
+  export let theme: Theme;
+  /**
+   * Function to handle click events.
+   *
+   * @param {...unknown[]} args - Arguments received by the click event handler.
+   */
+  export let onclick: (...args: unknown[]) => void;
 
-  const githubUrl = 'https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/';
+  const name = iconsData[id].name;
 
-  // @ts-ignore
-  $: name = data[id].name;
-  $: theme = !blacklist.includes(name) ? (lightMode ? '-Light' : '-Dark') : '';
-  // NOTE: This is a hacky way to get the icon name correctly
-  // In the original repo, the ScikitLearn icon is named like this: SciKitLearn-Light.svg or ScikitLearn-Dark.svg
-  // You might not see the diference, but the 'K' in 'kit' changes from 'K' to 'k' depending on the theme
+  // HACK: In the original repo, the ScikitLearn icon is named like this: SciKitLearn-Light.svg or ScikitLearn-Dark.svg
+  // The 'K' in 'kit' changes from 'K' to 'k' depending on the theme
   $: iconName = (function () {
-    if (name === 'ScikitLearn') {
-      return theme === '-Light' ? 'SciKitLearn-Light.svg' : 'ScikitLearn-Dark.svg';
+    if (darkmodeonly.includes(name)) {
+      return `${name}.svg`;
     }
 
-    return `${name}${theme}.svg`;
+    let titleTheme = toTitle(theme);
+
+    if (name === 'ScikitLearn') {
+      return `${theme === 'light' ? `SciKitLearn-${titleTheme}` : `ScikitLearn-${titleTheme}`}.svg`;
+    }
+
+    return `${name}-${titleTheme}.svg`;
   })();
-  //$: iconName = `${name}${theme}.svg`; // If we lived in a perfect world
 </script>
 
 <div class="tooltip max-w-12 max-h-12" data-tip={name} {...$$restProps}>
-  <button on:click={onClick}>
-    <img src={`${githubUrl}${iconName}`} alt={name} loading="lazy" />
+  <button on:click={onclick}>
+    <img
+      src={`https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/${iconName}`}
+      alt={name}
+      loading="lazy"
+    />
   </button>
 </div>

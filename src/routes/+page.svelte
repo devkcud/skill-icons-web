@@ -1,35 +1,32 @@
 <script lang="ts">
-  import 'iconify-icon';
-  import { onDestroy, onMount } from 'svelte';
-  import Sortable from 'sortablejs';
-  import SkillIcon from '$lib/components/SkillIcon.svelte';
-  import {
-    allIconsData,
-    icons,
-    clearIcons,
-    addIcon,
-    removeIcon,
-    sortIcons
-  } from '$lib/stores/icons';
-  import { theme, toggleTheme, type Theme } from '$lib/stores/theme';
-  import { perline, setPerline } from '$lib/stores/perline';
-  import LocalStorage from '$lib/utils/localstorage';
-  import { clipboard, toTitle } from '$lib/utils/string';
-  import { storageName } from '$lib/data/config';
-  import { loadFromURL } from '$lib/utils/urlimporter';
   import { toast } from '@zerodevx/svelte-toast';
+  import Sortable from 'sortablejs';
+  import { onDestroy, onMount } from 'svelte';
 
-  let search = '';
-  $: filteredIcons = Object.entries(allIconsData)
-    .filter(([key, value]) => {
-      return (
+  import { Button, Divider, SkillIcon, Tip } from '$lib/components/mod';
+
+  import { addIcon, clearIcons, icons, iconsData, removeIcon, sortIcons } from '$lib/stores/icons';
+  import { perline, setPerline } from '$lib/stores/perline';
+  import { theme, toggleTheme, type Theme } from '$lib/stores/theme';
+
+  import { storageName } from '$lib/utils/config';
+  import LocalStorage from '$lib/utils/localstorage';
+
+  import { clipboard, toTitle } from '$lib/utils/string';
+  import { loadFromURL } from '$lib/utils/urlimporter';
+
+  let importUrl: string = '';
+  let search: string = '';
+
+  $: filteredIcons = Object.entries(iconsData)
+    .filter(
+      ([key, value]) =>
         !$icons.includes(key) &&
-        (key.toLowerCase().includes(search.toLowerCase()) ||
-          value.name.toLowerCase().includes(search.toLowerCase()) ||
-          value.aliases.some((alias: string) => alias.toLowerCase().includes(search.toLowerCase())))
-      );
-    })
-    .map(([key]) => key);
+        [key, ...value.aliases, value.name].some((name) =>
+          name.toLowerCase().includes(search.toLocaleLowerCase())
+        )
+    )
+    .map(([name]) => name);
 
   $: url = {
     base: 'https://skillicons.dev/icons',
@@ -38,11 +35,9 @@
     perline: `&perline=${$perline}`
   };
 
-  $: fullUrl = url.base + url.icons + url.mode + url.perline;
-  $: markdown = `![Skill Icons](${fullUrl})`;
-  $: html = `<img src="${fullUrl}" alt="Skill Icons" />`;
-
-  let importUrl: string;
+  $: copyMountedURL = url.base + url.icons + url.mode + url.perline;
+  $: copyMarkdown = `![Skill Icons](${copyMountedURL})`;
+  $: copyHTML = `<img src="${copyMountedURL}" alt="Skill Icons" />`;
 
   let sortable: Sortable;
   let list: HTMLElement;
@@ -52,7 +47,7 @@
 
     $theme = (LocalStorage.get(THEME.name) || THEME.defaultValue) as Theme;
     $perline = Number(LocalStorage.get(PERLINE.name) || String(PERLINE.defaultValue));
-    $icons = JSON.parse(LocalStorage.get(ICONS.name) || '[]'); // can't be ICONS.defaultValue cause it will just throw "empty string"
+    $icons = JSON.parse(LocalStorage.get(ICONS.name)!) || ICONS.defaultValue; // can't be ICONS.defaultValue cause it will just throw "empty string"
 
     sortable = Sortable.create(list, {
       animation: 100,
@@ -72,125 +67,110 @@
     }
   });
 
-  function urlParse() {
+  /**
+   * Parses the provided URL and loads icons data from it. Resets import URL after loading.
+   * The function checks if the provided URL is valid and non-empty, and if it follows the required scheme.
+   * If not, it shows a toast message indicating an invalid URL and terminates.
+   */
+  function urlParse(): void {
     if (
       !importUrl ||
       importUrl.trim() === '' ||
       !importUrl.startsWith('https://skillicons.dev/icons?')
-    )
-      return toast.push('Invalid URL');
+    ) {
+      toast.push('Invalid URL');
+      return;
+    }
 
     loadFromURL(importUrl);
     importUrl = '';
   }
 </script>
 
-<svelte:head>
-  <title>Skill Icons - Image Builder</title>
-</svelte:head>
+<div class="mx-auto space-y-4 w-fit">
+  <div class="flex items-center gap-2 mx-auto w-fit">
+    <input
+      bind:value={importUrl}
+      class="input input-bordered input-sm"
+      type="text"
+      on:keydown={(e) => e.key === 'Enter' && urlParse()}
+      placeholder="Skill Icons Link"
+    />
 
-<div class="flex gap-2 items-center mx-auto w-fit">
-  <input
-    bind:value={importUrl}
-    class="input input-bordered input-sm"
-    type="text"
-    on:keydown={(e) => e.key === 'Enter' && urlParse()}
-    placeholder="Import URL"
-  />
+    <Button onclick={urlParse} icon="mdi:import" color="primary">Import</Button>
+  </div>
 
-  <button on:click={() => urlParse()} class="btn btn-sm btn-primary">
-    <iconify-icon icon="mdi:import" />
-    Import
-  </button>
+  <Tip>Paste the URL of your existing Skill Icons, click "Import" and begin editing.</Tip>
 </div>
 
-<div class="divider px-16 my-8"></div>
+<Divider />
 
 <section class="flex flex-col items-center gap-4">
-  <div class="flex gap-2">
-    <button on:click={toggleTheme} class="btn btn-sm" class:btn-primary={$theme !== 'light'}>
-      {#if $theme === 'light'}
-        <iconify-icon icon="lucide:sun" />
-      {:else}
-        <iconify-icon icon="lucide:moon" />
-      {/if}
+  <div class="space-x-2">
+    <Button
+      onclick={toggleTheme}
+      color={$theme === 'light' ? 'secondary' : 'primary'}
+      icon={$theme === 'light' ? 'lucide:sun' : 'lucide:moon'}
+    >
       {toTitle($theme)}
-    </button>
-
-    <button on:click={sortIcons} class="btn btn-sm">
-      <iconify-icon icon="mdi:sort" />
-      Sort
-    </button>
-
-    <button on:click={clearIcons} class="btn btn-sm btn-error">
-      <iconify-icon icon="lucide:trash-2" />
-      Clear
-    </button>
+    </Button>
+    <Button onclick={sortIcons} icon="mdi:sort">Sort</Button>
+    <Button onclick={clearIcons} color="error" icon="lucide:trash-2">Clear</Button>
 
     <div class="tooltip" data-tip="Quantity per row">
-      <div>
-        <button class="btn btn-sm" on:click={() => setPerline($perline - 1)}>-</button>
-        <input
-          class="input input-sm w-16 text-center"
-          on:change={() => setPerline($perline)}
-          bind:value={$perline}
-        />
-        <button class="btn btn-sm" on:click={() => setPerline($perline + 1)}>+</button>
-      </div>
+      <Button onclick={() => setPerline($perline - 1)}>-</Button>
+
+      <input
+        class="w-16 text-center input input-sm"
+        on:change={() => setPerline($perline)}
+        bind:value={$perline}
+      />
+
+      <Button onclick={() => setPerline($perline + 1)}>+</Button>
     </div>
   </div>
 
   <div
     bind:this={list}
-    class="grid gap-2 px-4 my-4"
+    class="grid gap-2"
+    class:p-4={$icons.length > 0}
     style={`grid-template-columns: repeat(${$perline},minmax(0,1fr));`}
   >
     {#each $icons as id (id)}
-      <SkillIcon data-id={id} {id} lightMode={$theme === 'light'} onClick={() => removeIcon(id)} />
+      <SkillIcon data-id={id} {id} theme={$theme} onclick={() => removeIcon(id)} />
     {/each}
   </div>
 
   {#if !$icons.length}
-    <p class="text-neutral/70 italic text-center">No icons selected.</p>
+    <p class="italic text-center text-neutral/70">No icons selected.</p>
   {:else}
-    <div class="flex gap-2 items-center">
-      <button class="btn btn-sm" on:click={() => clipboard(fullUrl)}>
-        <iconify-icon icon="lucide:clipboard-copy" class="text-neutral text-xl" />
-        Copy URL
-      </button>
-
-      <button class="btn btn-sm" on:click={() => clipboard(markdown)}>
-        <iconify-icon icon="material-symbols:markdown" class="text-neutral text-xl" />
+    <div class="flex items-center gap-2">
+      <Button onclick={() => clipboard(copyMountedURL)} icon="lucide:clipboard-copy">
+        Copy Image URL
+      </Button>
+      <Button onclick={() => clipboard(copyMarkdown)} icon="material-symbols:markdown">
         Copy Markdown
-      </button>
-
-      <button class="btn btn-sm" on:click={() => clipboard(html)}>
-        <iconify-icon icon="material-symbols:code" class="text-neutral text-xl" />
-        Copy HTML
-      </button>
+      </Button>
+      <Button onclick={() => clipboard(copyHTML)} icon="material-symbols:code">
+        Copy HTML Code
+      </Button>
     </div>
 
-    <div class="flex gap-2 items-center opacity-50 text-sm">
-      <iconify-icon icon="mdi:information" />
-      <b>TIP:</b>
-      <i>Drag icons to reorder!</i>
-    </div>
+    <Tip>Drag icons to reorder!</Tip>
   {/if}
 </section>
 
-<div class="divider px-16 my-8"></div>
+<Divider />
 
 <section>
-  <div class="flex items-center justify-center m-4 gap-2">
-    <label class="flex items-center gap-2 input input-bordered input-sm">
-      <iconify-icon icon="lucide:search" class="opacity-70" />
-      <input type="text" bind:value={search} placeholder="Search by name" />
-    </label>
-  </div>
+  <label class="flex items-center gap-2 mx-auto max-w-80 cursor-text input input-bordered input-sm">
+    <iconify-icon icon="lucide:search" class="opacity-70" />
+    <input type="text" bind:value={search} class="w-full" placeholder="Search by name" />
+  </label>
 
-  <div class="flex justify-center flex-wrap gap-4 p-4 max-w-7xl mx-auto">
+  <div class="flex flex-wrap justify-center gap-4 p-4 mx-auto max-w-7xl">
     {#each filteredIcons as id (id)}
-      <SkillIcon {id} lightMode={$theme === 'light'} onClick={() => addIcon(id)} />
+      <SkillIcon {id} theme={$theme} onclick={() => addIcon(id)} />
     {/each}
   </div>
 </section>

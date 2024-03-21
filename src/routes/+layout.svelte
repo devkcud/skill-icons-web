@@ -1,7 +1,8 @@
 <script lang="ts">
   import 'iconify-icon';
-  import { SvelteToast } from '@zerodevx/svelte-toast';
   import '../app.css';
+
+  import { SvelteToast } from '@zerodevx/svelte-toast';
 
   const options = {
     theme: {
@@ -12,11 +13,15 @@
   };
 </script>
 
+<svelte:head>
+  <title>Skill Icons - Image Builder</title>
+</svelte:head>
+
 <SvelteToast {options} />
 
-<header class="p-8 flex flex-col justify-center items-center">
+<header class="flex flex-col items-center justify-center p-8">
   <img src="/skillicons.svg" alt="Skill Icons logo" class="max-h-16" />
-  <p class="text-center font-semibold text-xl mt-3">
+  <p class="mt-3 text-xl font-semibold text-center">
     Showcase your skills on your GitHub or resumé with ease!
   </p>
 </header>

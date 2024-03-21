@@ -39,7 +39,6 @@
   },
   "type": "module",
   "dependencies": {
-    "iconify-icon": "^2.0.0",
-    "tailwind-merge": "^2.2.1"
+    "iconify-icon": "^2.0.0"
   }
 }
