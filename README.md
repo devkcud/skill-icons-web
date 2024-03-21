@@ -20,7 +20,6 @@
 Unofficial "Image Builder" for [Skill Icons](https://github.com/tandpfun/skill-icons), designed with the original project's layout in mind.  
 This tool provides a user-friendly interface to enhance your experience in working with Skill Icons, giving you the flexibility to customize and organize your icons.
 
-
 ## 🔥 Features
 
 - [x] Manage Icons (Add, Remove & Rearrange)
