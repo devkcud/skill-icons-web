@@ -12,6 +12,8 @@
   </a>
 </p>
 
+## About
+
 Unofficial "Image Builder" for [Skill Icons](https://github.com/tandpfun/skill-icons), designed with the original project's layout in mind.  
 This tool provides a user-friendly interface to enhance your experience in working with Skill Icons, giving you the flexibility to customize and organize your icons.
 
@@ -31,7 +33,8 @@ This tool provides a user-friendly interface to enhance your experience in worki
 
 ## 📂 Running Locally
 
-> NOTE: An internet connection is required, as the tool fetches icons from the [Skill Icons](https://github.com/tandpfun/skill-icons) repository and generates images from [skillicons.dev](https://skillicons.dev/). Additionally, it utilizes icons from Iconify.
+> [!NOTE]  
+> An internet connection is required, as the tool fetches icons from the [Skill Icons](https://github.com/tandpfun/skill-icons) repository and generates images from [skillicons.dev](https://skillicons.dev/). Additionally, it utilizes icons from Iconify.
 
 1. Clone the repo
 
@@ -66,6 +69,5 @@ This project is released under the [Unlicense](https://unlicense.org/) - see the
 
 The icons used in this project are sourced from the [Skill Icons](https://github.com/tandpfun/skill-icons) repository, which has its own licensing terms. Please refer to the repository's license for more information.
 
-## ❗️ DISCLAIMER
-
-This project is an independent effort and is not affiliated with the official [Skill Icons](https://github.com/tandpfun/skill-icons) project or its creator, [Thijs](https://github.com/tandpfun). The original logo at `/static/favicon.png` and `/static/skillicons.svg` are both owned by [Thijs](https://github.com/tandpfun).
+> [!IMPORTANT]  
+> This project is an independent effort and is not affiliated with the official [Skill Icons](https://github.com/tandpfun/skill-icons) project or its creator, [Thijs](https://github.com/tandpfun). The original logo at `/static/favicon.png` and `/static/skillicons.svg` are both owned by [Thijs](https://github.com/tandpfun).
