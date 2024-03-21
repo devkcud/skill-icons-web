@@ -14,11 +14,12 @@
 
 ## About
 
+> [!IMPORTANT]  
+> This project is an independent effort and is not affiliated with the official [Skill Icons](https://github.com/tandpfun/skill-icons) project or its creator, [Thijs](https://github.com/tandpfun). The original logo at `/static/favicon.png` and `/static/skillicons.svg` are both owned by [Thijs](https://github.com/tandpfun).
+
 Unofficial "Image Builder" for [Skill Icons](https://github.com/tandpfun/skill-icons), designed with the original project's layout in mind.  
 This tool provides a user-friendly interface to enhance your experience in working with Skill Icons, giving you the flexibility to customize and organize your icons.
 
-> [!IMPORTANT]  
-> This project is an independent effort and is not affiliated with the official [Skill Icons](https://github.com/tandpfun/skill-icons) project or its creator, [Thijs](https://github.com/tandpfun). The original logo at `/static/favicon.png` and `/static/skillicons.svg` are both owned by [Thijs](https://github.com/tandpfun).
 
 ## 🔥 Features
 
