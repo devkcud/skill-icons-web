@@ -117,7 +117,7 @@
     <Button onclick={sortIcons} icon="mdi:sort">Sort</Button>
     <Button onclick={clearIcons} color="error" icon="lucide:trash-2">Clear</Button>
 
-    <div class="tooltip" data-tip="Quantity per row">
+    <div class="tooltip" data-tip="Icons per line">
       <Button onclick={() => setPerline($perline - 1)}>-</Button>
 
       <input
