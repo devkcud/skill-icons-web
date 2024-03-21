@@ -142,7 +142,7 @@
   </div>
 
   {#if !$icons.length}
-    <p class="italic text-center text-neutral/70">No icons selected.</p>
+    <Tip>Click on the icons of the grid below to add them.</Tip>
   {:else}
     <div class="flex items-center gap-2">
       <Button onclick={() => clipboard(copyMountedURL)} icon="lucide:clipboard-copy">
@@ -156,7 +156,7 @@
       </Button>
     </div>
 
-    <Tip>Drag icons to reorder!</Tip>
+    <Tip>Drag icons to reorder.</Tip>
   {/if}
 </section>
 
