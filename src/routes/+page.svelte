@@ -100,7 +100,7 @@
     <Button onclick={urlParse} icon="mdi:import" color="primary">Import</Button>
   </div>
 
-  <Tip>Paste the URL of your existing Skill Icons, click "Import" and begin editing.</Tip>
+  <Tip>Paste the URL of your existing Skill Icons image, and click "Import".</Tip>
 </div>
 
 <Divider />
