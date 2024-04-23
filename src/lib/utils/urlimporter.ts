@@ -70,7 +70,11 @@ function extractParams(url: string): URLProps {
  * @param {string} url - The URL string from which to extract the settings.
  */
 export function loadFromURL(url: string): void {
-  const { iconsParam, themeParam, perlineParam } = extractParams(url);
+  let { iconsParam, themeParam, perlineParam } = extractParams(url);
+
+  if (perlineParam === 0) {
+    perlineParam = storageName.PERLINE.defaultValue;
+  }
 
   icons.set(
     iconsParam !== null
