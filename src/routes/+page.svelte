@@ -14,6 +14,7 @@
 
   import { clipboard, toTitle } from '$lib/utils/string';
   import { loadFromURL } from '$lib/utils/urlimporter';
+  import ConfirmationToast from '$lib/components/ConfirmationToast.svelte';
 
   let importUrl: string = '';
   let search: string = '';
@@ -85,6 +86,41 @@
     loadFromURL(importUrl);
     importUrl = '';
   }
+
+  /**
+   * Resets configuration settings to their default values. Being gathered from `storageName` at `/lib/utils/config.ts`
+   */
+  function resetToDefault(event?: MouseEvent) {
+    function reset() {
+      $theme = storageName.THEME.defaultValue;
+      $perline = storageName.PERLINE.defaultValue;
+    }
+
+    if (event?.shiftKey) {
+      reset();
+      toast.push('FORCE: Reset config to default');
+      return;
+    }
+
+    toast.push({
+      component: {
+        src: ConfirmationToast,
+        props: {
+          message: 'Reset config to default?',
+          onAccept: () => {
+            reset();
+            toast.push('Resetting...');
+          },
+          onDeny: () => {
+            toast.push('Cancelled operation');
+          }
+        },
+        sendIdTo: 'toastId'
+      },
+      dismissable: false,
+      initial: 0
+    });
+  }
 </script>
 
 <div class="mx-auto space-y-4 w-fit">
@@ -116,6 +152,8 @@
     </Button>
     <Button onclick={sortIcons} icon="mdi:sort">Sort</Button>
     <Button onclick={clearIcons} color="error" icon="lucide:trash-2">Clear</Button>
+    <Button onclick={resetToDefault} color="error" icon="fluent:arrow-reset-20-filled">Reset</Button
+    >
 
     <div class="tooltip" data-tip="Icons per line">
       <Button onclick={() => setPerline($perline - 1)}>-</Button>
