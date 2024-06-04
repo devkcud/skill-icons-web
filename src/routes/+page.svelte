@@ -37,8 +37,8 @@
   };
 
   $: copyMountedURL = url.base + url.icons + url.mode + url.perline;
-  $: copyMarkdown = `![Skill Icons](${copyMountedURL})`;
-  $: copyHTML = `<img src="${copyMountedURL}" alt="Skill Icons" />`;
+  $: copyMarkdown = `[![My Skills](${copyMountedURL})](https://skillicons.dev)`;
+  $: copyHTML = `<a href="https://skillicons.dev"><img src="${copyMountedURL}" alt="My Skills" /></a>`;
 
   let sortable: Sortable;
   let list: HTMLElement;
