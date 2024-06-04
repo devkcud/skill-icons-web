@@ -134,7 +134,7 @@
     bind:this={list}
     class="grid gap-2"
     class:p-4={$icons.length > 0}
-    style={`grid-template-columns: repeat(${$perline},minmax(0,1fr));`}
+    style={`grid-template-columns: repeat(${$icons.length < $perline ? $icons.length : $perline},minmax(0,1fr));`}
   >
     {#each $icons as id (id)}
       <SkillIcon data-id={id} {id} theme={$theme} onclick={() => removeIcon(id)} />
