@@ -201,10 +201,16 @@
 <Divider />
 
 <section>
-  <label class="flex items-center gap-2 mx-auto max-w-80 cursor-text input input-bordered input-sm">
-    <iconify-icon icon="lucide:search" class="opacity-70" />
-    <input type="text" bind:value={search} class="w-full" placeholder="Search by name" />
-  </label>
+  <div class="flex mx-auto w-fit items-center gap-2">
+    <label class="flex items-center gap-2 cursor-text input input-bordered input-sm">
+      <iconify-icon icon="lucide:search" class="opacity-70" />
+      <input type="text" bind:value={search} class="w-full" placeholder="Search by name" />
+    </label>
+
+    <Button color="error" onclick={() => (search = '')}>
+      <iconify-icon icon="gridicons:cross" />
+    </Button>
+  </div>
 
   <div class="flex flex-wrap justify-center gap-4 p-4 mx-auto max-w-7xl">
     {#each filteredIcons as id (id)}
