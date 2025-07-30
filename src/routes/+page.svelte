@@ -124,13 +124,13 @@
 </script>
 
 <div class="mx-auto space-y-4 w-fit">
-  <div class="flex items-center gap-2 mx-auto w-fit">
+  <div class="flex items-center gap-2 mx-auto">
     <input
       bind:value={importUrl}
-      class="input input-bordered input-sm"
+      class="input input-bordered input-sm w-full"
       type="text"
       on:keydown={(e) => e.key === 'Enter' && urlParse()}
-      placeholder="Skill Icons Link"
+      placeholder="https://skillicons.dev/icons?i=...&theme=light&perline=10"
     />
 
     <Button onclick={urlParse} icon="mdi:import" color="primary">Import</Button>
@@ -139,7 +139,9 @@
   <Tip>Paste the URL of your existing Skill Icons image, and click "Import".</Tip>
 </div>
 
-<Divider />
+<div class="max-w-5xl mx-auto">
+  <Divider />
+</div>
 
 <section class="flex flex-col items-center gap-4">
   <div class="space-x-2">
@@ -198,7 +200,9 @@
   {/if}
 </section>
 
-<Divider />
+<div class="max-w-5xl mx-auto">
+  <Divider />
+</div>
 
 <section>
   <div class="flex mx-auto w-fit items-center gap-2">

@@ -38,7 +38,11 @@
   })();
 </script>
 
-<div class="tooltip max-w-12 max-h-12" data-tip={name} {...$$restProps}>
+<div
+  class="tooltip max-w-12 max-h-12 hover:scale-110 transition-transform"
+  data-tip={name}
+  {...$$restProps}
+>
   <button on:click={onclick}>
     <img src={`/skill-icons/icons/${iconName}`} alt={name} loading="lazy" />
   </button>
