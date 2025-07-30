@@ -36,9 +36,6 @@ This tool provides a user-friendly interface to enhance your experience in worki
 
 ## 📂 Running Locally
 
-> [!NOTE]  
-> An internet connection is required, as the tool fetches icons from the [Skill Icons](https://github.com/tandpfun/skill-icons) repository and generates images from [skillicons.dev](https://skillicons.dev/). Additionally, it utilizes icons from Iconify.
-
 1. Clone the repo
 
 ```bash
@@ -46,19 +43,25 @@ git clone https://github.com/devkcud/skill-icons-web
 cd skill-icons-web
 ```
 
-2. Install dependencies using Bun (or similar)
+2. Init submodules
+
+```bash
+git submodule update --init --recursive
+```
+
+3. Install dependencies using Bun (or similar)
 
 ```bash
 bun install
 ```
 
-3. Run the server
+4. Run the server
 
 ```bash
 bun run dev
 ```
 
-4. Open `http://localhost:5173` in your browser
+5. Open `http://localhost:5173` in your browser
 
 ## 📝 Contributing
 
