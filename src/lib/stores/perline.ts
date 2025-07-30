@@ -24,6 +24,6 @@ export function setPerline(amount: number): void {
   if (amount < 1) amount = 1;
   if (amount > 50) amount = 50;
 
-  perline.set(amount);
+  perline.set(Number(amount));
   storage.set(String(amount));
 }
