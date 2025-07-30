@@ -1,0 +1,3 @@
+[submodule "static/skill-icons"]
+	path = static/skill-icons
+	url = https://github.com/tandpfun/skill-icons.git

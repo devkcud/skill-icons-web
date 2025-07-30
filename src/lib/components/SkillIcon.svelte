@@ -41,7 +41,7 @@
 <div class="tooltip max-w-12 max-h-12" data-tip={name} {...$$restProps}>
   <button on:click={onclick}>
     <img
-      src={`https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/${iconName}`}
+      src={`/skill-icons/icons/${iconName}`}
       alt={name}
       loading="lazy"
     />
