@@ -1,14 +1,11 @@
 <h1 align="center">🖼️ Skill Icons Image Builder 🖌️</h1>
 
 <p align="center">
-  <a href="https://skill-icons-web.vercel.app">
-    <img alt="GitHub deployments" src="https://img.shields.io/github/deployments/devkcud/skill-icons-web/Production">
-  </a>
   <a href="https://github.com/devkcud/skill-icons-web/issues">
     <img alt="GitHub Issues or Pull Requests" src="https://img.shields.io/github/issues/devkcud/skill-icons-web">
   </a>
-  <a href="https://skill-icons-web.vercel.app">
-    <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fskill-icons-web.vercel.app">
+  <a href="https://skillicons.devkcud.com">
+    <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fskillicons.devkcud.com">
   </a>
 </p>
 
