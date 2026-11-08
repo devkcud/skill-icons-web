@@ -4,6 +4,7 @@
   import { onDestroy, onMount } from 'svelte';
 
   import { Button, Divider, SkillIcon, Tip } from '$lib/components/mod';
+  import { schema, site } from '$lib/seo';
 
   import { addIcon, clearIcons, icons, iconsData, removeIcon, sortIcons } from '$lib/stores/icons';
   import { perline, setPerline } from '$lib/stores/perline';
@@ -122,6 +123,29 @@
     });
   }
 </script>
+
+<svelte:head>
+  <title>{site.title}</title>
+  <meta name="description" content={site.description} />
+  <link rel="canonical" href={site.url} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={site.name} />
+  <meta property="og:title" content={site.title} />
+  <meta property="og:description" content={site.description} />
+  <meta property="og:url" content={site.url} />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content={site.image} />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="387" />
+  <meta property="og:image:height" content="387" />
+  <meta property="og:image:alt" content="Skill Icons logo" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={site.title} />
+  <meta name="twitter:description" content={site.description} />
+  <meta name="twitter:image" content={site.image} />
+  <meta name="twitter:image:alt" content="Skill Icons logo" />
+  <svelte:element this="script" type="application/ld+json">{schema}</svelte:element>
+</svelte:head>
 
 <div class="mx-auto space-y-4 w-fit">
   <div class="flex items-center gap-2 mx-auto">

@@ -3,6 +3,7 @@
   import '../app.css';
 
   import { SvelteToast } from '@zerodevx/svelte-toast';
+  import { site } from '$lib/seo';
 
   const options = {
     theme: {
@@ -14,7 +15,7 @@
 </script>
 
 <svelte:head>
-  <title>Skill Icons - Image Builder</title>
+  <title>{site.name}</title>
 </svelte:head>
 
 <SvelteToast {options} />
