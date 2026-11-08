@@ -41,6 +41,7 @@
 <div
   class="tooltip max-w-12 max-h-12 before:max-w-20 before:break-words hover:scale-110 transition-transform"
   data-tip={name}
+  data-id={id}
   {...$$restProps}
 >
   <button on:click={onclick}>

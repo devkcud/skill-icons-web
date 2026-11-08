@@ -52,6 +52,10 @@
     $icons = JSON.parse(LocalStorage.get(ICONS.name)!) || ICONS.defaultValue; // can't be ICONS.defaultValue cause it will just throw "empty string"
 
     sortable = Sortable.create(list, {
+      draggable: '[data-id]',
+      onMove: (evt) => {
+        if (!evt.related.matches('[data-id]')) return false;
+      },
       animation: 100,
       store: {
         get: (): string[] => $icons,
@@ -236,14 +240,23 @@
     bind:this={list}
     class="grid gap-2"
     class:p-4={$icons.length > 0}
-    style={`grid-template-columns: repeat(${$icons.length < $perline ? $icons.length : $perline},minmax(0,1fr));`}
+    style:grid-template-columns={`repeat(${$perline}, minmax(0, 1fr))`}
   >
     {#each $icons as id (id)}
-      <SkillIcon data-id={id} {id} theme={$theme} onclick={() => removeIcon(id)} />
+      <SkillIcon {id} theme={$theme} onclick={() => removeIcon(id)} />
+    {/each}
+
+    {#each Array(($perline - ($icons.length % $perline)) % $perline) as _}
+      <div class="aspect-square w-full rounded-[25%] bg-black/10"></div>
     {/each}
   </div>
 
   {#if !$icons.length}
+    <div class="flex gap-2 p-4" aria-hidden="true">
+      {#each Array.from({ length: $perline }) as _}
+        <div class="size-12 rounded-xl bg-black/10"></div>
+      {/each}
+    </div>
     <Tip>Click on the icons of the grid below to add them.</Tip>
   {:else}
     <div class="flex flex-wrap items-center justify-center gap-2">
