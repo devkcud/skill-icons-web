@@ -60,6 +60,17 @@ bun run dev
 
 5. Open `http://localhost:5173` in your browser
 
+## Docker
+
+```bash
+docker build -t skill-icons-web .
+docker run --rm -p 3000:3000 skill-icons-web
+```
+
+The Docker build downloads the pinned Skill Icons assets, so an initialized submodule is not required.
+
+Keep `SKILL_ICONS_REF` in the Dockerfile aligned with the submodule revision when updating icons.
+
 ## 📝 Contributing
 
 Feel free to fork the repository, make modifications, and submit PRs. Make sure that any changes adhere to our standards for safety and maintainability.

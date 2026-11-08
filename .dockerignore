@@ -1,0 +1,14 @@
+.git
+**/.git
+.agents
+.codex
+.vscode
+.playwright-mcp
+.svelte-kit
+node_modules
+build
+package
+.env
+.env.*
+*.log
+static/skill-icons
