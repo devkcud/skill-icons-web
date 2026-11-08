@@ -20,7 +20,7 @@ export const perline: Writable<number> = writable<number>(PERLINE.defaultValue);
  * @param {unknown} amount - The new 'per line' value to be set. **MIN: 1 | MAX: 50**
  */
 export function setPerline(amount: unknown): void {
-  let sanitizedAmount = sanitizePerline(amount);
+  const sanitizedAmount = sanitizePerline(amount);
 
   perline.set(sanitizedAmount);
   storage.set(String(sanitizedAmount));
