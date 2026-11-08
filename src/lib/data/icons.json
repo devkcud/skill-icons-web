@@ -779,6 +779,10 @@
     "name": "Solidity",
     "aliases": []
   },
+  "spotify": {
+    "name": "Spotify",
+    "aliases": ["music", "audio", "streaming"]
+  },
   "spring": {
     "name": "Spring",
     "aliases": ["java"]
@@ -874,6 +878,10 @@
   "vercel": {
     "name": "Vercel",
     "aliases": ["cloud"]
+  },
+  "verilog": {
+    "name": "Verilog",
+    "aliases": ["hdl", "hardware description language", "fpga"]
   },
   "visualstudio": {
     "name": "VisualStudio",
