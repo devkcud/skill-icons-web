@@ -39,11 +39,18 @@
 </script>
 
 <div
-  class="tooltip max-w-12 max-h-12 hover:scale-110 transition-transform"
+  class="tooltip max-w-12 max-h-12 before:max-w-20 before:break-words hover:scale-110 transition-transform"
   data-tip={name}
   {...$$restProps}
 >
   <button on:click={onclick}>
-    <img src={`/skill-icons/icons/${iconName}`} alt={name} loading="lazy" />
+    <img
+      src={`/skill-icons/icons/${iconName}`}
+      alt={name}
+      width="48"
+      height="48"
+      loading="lazy"
+      decoding="async"
+    />
   </button>
 </div>

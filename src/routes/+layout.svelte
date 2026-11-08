@@ -20,33 +20,28 @@
 
 <SvelteToast {options} />
 
-<header class="flex flex-col items-center justify-center p-8">
-  <img src="/skillicons.svg" alt="Skill Icons logo" class="max-h-16" />
-  <p class="mt-3 text-xl font-semibold text-center">
-    Showcase your skills on your GitHub or resumé with ease!
-  </p>
-</header>
-
 <main>
   <slot />
 </main>
 
-<footer class="flex justify-center gap-2 py-8">
+<footer class="flex flex-wrap justify-center gap-4 px-4 py-8 text-sm">
   <a
-    class="transition opacity-70 hover:opacity-100"
+    class="flex items-center gap-2 transition opacity-70 hover:opacity-100"
     href="https://github.com/devkcud/skill-icons-web"
     target="_blank"
     rel="noreferrer"
+    aria-label="Source on GitHub"
   >
-    <iconify-icon icon="mdi:github" width="24" height="24" />
+    <iconify-icon icon="mdi:github" width="24" height="24" aria-hidden="true" />
   </a>
 
   <a
-    class="transition opacity-70 hover:opacity-100"
+    class="flex items-center gap-2 transition opacity-70 hover:opacity-100"
     href="https://skillicons.dev"
     target="_blank"
     rel="noreferrer"
+    aria-label="Original Skill Icons"
   >
-    <iconify-icon icon="ant-design:project-filled" width="24" height="24" />
+    <img src="/favicon.png" alt="Skill Icons logo" class="size-5 grayscale" aria-hidden="true" />
   </a>
 </footer>

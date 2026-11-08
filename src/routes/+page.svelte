@@ -147,12 +147,47 @@
   <svelte:element this="script" type="application/ld+json">{schema}</svelte:element>
 </svelte:head>
 
-<div class="mx-auto space-y-4 w-fit">
+<header class="flex flex-col items-center justify-center p-8">
+  <h1 class="w-72 max-w-full">
+    <img src="/skillicons.svg" alt={site.name} width="2096" height="463" class="h-auto w-full" />
+  </h1>
+
+  <div class="opacity-80 text-xs mt-4 text-center">
+    <p>
+      Independent, open-source builder for
+      <a class="link" href="https://github.com/tandpfun/skill-icons">Skill Icons</a>.
+    </p>
+    <p>Not affiliated with its creator. Icons and logo belong to their respective owners.</p>
+  </div>
+
+  <details class="mx-auto max-w-3xl p-4 text-xs">
+    <summary class="mx-auto w-fit cursor-pointer font-semibold">How to use</summary>
+    <div class="mt-4 space-y-3">
+      <ol class="list-decimal space-y-2 pl-5">
+        <li>Search and select the languages, frameworks, and tools you use below.</li>
+        <li>Drag to reorder, choose a dark or light theme, and set icons per line.</li>
+        <li>
+          Use <strong>Copy Markdown</strong>, <strong>Copy HTML Code</strong>, or
+          <strong>Copy Image URL</strong> on your website or GitHub README.
+        </li>
+      </ol>
+
+      <span class="divider">or</span>
+
+      <p>
+        Import an existing Skill Icons image URL to edit it. Your choices are saved in this browser.
+      </p>
+    </div>
+  </details>
+</header>
+
+<div class="mx-auto max-w-3xl space-y-4 px-4">
   <div class="flex items-center gap-2 mx-auto">
     <input
       bind:value={importUrl}
       class="input input-bordered input-sm w-full"
       type="text"
+      aria-label="Existing Skill Icons image URL"
       on:keydown={(e) => e.key === 'Enter' && urlParse()}
       placeholder="https://skillicons.dev/icons?i=...&theme=light&perline=10"
     />
@@ -160,15 +195,17 @@
     <Button onclick={urlParse} icon="mdi:import" color="primary">Import</Button>
   </div>
 
-  <Tip>Paste the URL of your existing Skill Icons image, and click "Import".</Tip>
+  <div class="mx-auto w-fit">
+    <Tip>Paste the URL of your existing Skill Icons image, and click "Import".</Tip>
+  </div>
 </div>
 
 <div class="max-w-5xl mx-auto">
   <Divider />
 </div>
 
-<section class="flex flex-col items-center gap-4">
-  <div class="space-x-2">
+<section class="flex flex-col items-center gap-4 px-4" aria-labelledby="customize-heading">
+  <div class="flex flex-wrap items-center justify-center gap-2">
     <Button
       onclick={toggleTheme}
       color={$theme === 'light' ? 'secondary' : 'primary'}
@@ -182,15 +219,16 @@
     >
 
     <div class="tooltip" data-tip="Icons per line">
-      <Button onclick={() => setPerline($perline - 1)}>-</Button>
+      <Button onclick={() => setPerline($perline - 1)} aria-label="Fewer icons per line">-</Button>
 
       <input
         class="w-16 text-center input input-sm"
+        aria-label="Icons per line"
         on:change={() => setPerline($perline)}
         bind:value={$perline}
       />
 
-      <Button onclick={() => setPerline($perline + 1)}>+</Button>
+      <Button onclick={() => setPerline($perline + 1)} aria-label="More icons per line">+</Button>
     </div>
   </div>
 
@@ -208,7 +246,7 @@
   {#if !$icons.length}
     <Tip>Click on the icons of the grid below to add them.</Tip>
   {:else}
-    <div class="flex items-center gap-2">
+    <div class="flex flex-wrap items-center justify-center gap-2">
       <Button onclick={() => clipboard(copyMountedURL)} icon="lucide:clipboard-copy">
         Copy Image URL
       </Button>
@@ -228,14 +266,20 @@
   <Divider />
 </div>
 
-<section>
+<section aria-labelledby="browse-heading">
   <div class="flex mx-auto w-fit items-center gap-2">
     <label class="flex items-center gap-2 cursor-text input input-bordered input-sm">
       <iconify-icon icon="lucide:search" class="opacity-70" />
-      <input type="text" bind:value={search} class="w-full" placeholder="Search by name" />
+      <input
+        type="search"
+        bind:value={search}
+        class="w-full"
+        placeholder="Search by name"
+        aria-label="Search skill icons by name"
+      />
     </label>
 
-    <Button color="error" onclick={() => (search = '')}>
+    <Button color="error" onclick={() => (search = '')} aria-label="Clear icon search">
       <iconify-icon icon="gridicons:cross" />
     </Button>
   </div>

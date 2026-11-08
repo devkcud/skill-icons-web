@@ -20,6 +20,7 @@
 </script>
 
 <button
+  {...$$restProps}
   class="btn btn-sm"
   class:btn-primary={color === 'primary'}
   class:btn-secondary={color === 'secondary'}
